@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Rapport PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* --- STYLE DU DOCUMENT (Ce qui sera dans le PDF) --- */
+        :root {
+            --col-entreprise: #3498db;
+            --col-ecole: #e67e22;
+            --col-dark: #2c3e50;
+            --col-light: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #555; /* Fond gris pour l'interface web uniquement */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Bouton de téléchargement */
+        #btn-download {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        #btn-download:hover { transform: scale(1.05); }
+
+        /* --- LA FEUILLE A4 --- */
+        #report-content {
+            background: white;
+            width: 210mm; /* Largeur A4 */
+            min-height: 297mm;
+            padding: 20mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        /* --- CONTENU --- */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid var(--col-dark);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .header h1 { color: var(--col-dark); font-size: 28px; margin: 0; text-transform: uppercase; }
+        .header p { color: #7f8c8d; font-size: 14px; margin-top: 5px; }
+
+        .section-title {
+            font-size: 20px;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .bg-entreprise { background-color: var(--col-entreprise); }
+        .bg-ecole { background-color: var(--col-ecole); }
+
+        /* Les cartes de compétences */
+        .item-card {
+            border-left: 5px solid #ccc;
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 20px;
+            page-break-inside: avoid; /* Empêche de couper une mission en deux sur le PDF */
+        }
+        
+        .item-card.entreprise { border-color: var(--col-entreprise); }
+        .item-card.ecole { border-color: var(--col-ecole); }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .item-title { font-size: 18px; font-weight: bold; color: #333; }
+        
+        .badge {
+            font-size: 12px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: white;
+            background: #95a5a6;
+        }
+        .badge.mission { background: #8e44ad; } /* Violet */
+        .badge.competence { background: #16a085; } /* Vert Sarcelle */
+
+        .item-desc {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="btn-download" onclick="generatePDF()">🖨️ Télécharger le Dossier PDF</button>
+
+    <div id="report-content">
+        
+        <div class="header">
+            <h1>Dossier de Suivi d'Alternance</h1>
+            <p>Synthèse des missions et compétences acquises</p>
+            <p><strong>Généré le :</strong> <span id="date-jour"></span></p>
+        </div>
+
+        <div id="content-injection"></div>
+
+        <div class="footer">
+            Document généré automatiquement depuis le Portfolio MindMap.
+        </div>
+    </div>
+
+    <script>
+        // 1. Mettre la date du jour
+        document.getElementById('date-jour').innerText = new Date().toLocaleDateString('fr-FR');
+
+        // 2. Charger le JSON et construire le HTML
+        fetch('data.json')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('content-injection');
+                const items = Object.values(data.popupContent);
+
+                // Séparer les données
+                const entrepriseItems = items.filter(i => i.context === 'entreprise');
+                const ecoleItems = items.filter(i => i.context === 'ecole');
+
+                // Fonction pour générer le HTML d'une liste
+                const generateHTML = (title, list, cssClass) => {
+                    if(list.length === 0) return '';
+                    
+                    let html = `<div class="section-title bg-${cssClass}">${title}</div>`;
+                    
+                    list.forEach(item => {
+                        html += `
+                        <div class="item-card ${cssClass}">
+                            <div class="item-header">
+                                <span class="item-title">${item.title}</span>
+                                <span class="badge ${item.type}">${item.type}</span>
+                            </div>
+                            <div class="item-desc">${item.detail}</div>
+                        </div>
+                        `;
+                    });
+                    return html;
+                };
+
+                // Injection dans la page
+                let finalHTML = "";
+                finalHTML += generateHTML("🏢 Expérience en Entreprise", entrepriseItems, "entreprise");
+                finalHTML += generateHTML("🎓 Parcours Académique", ecoleItems, "ecole");
+                
+                container.innerHTML = finalHTML;
+            })
+            .catch(err => alert("Erreur : Lancez ce fichier avec Live Server pour lire le JSON !"));
+
+        // 3. Fonction de génération PDF
+        function generatePDF() {
+            const element = document.getElementById('report-content');
+            
+            const opt = {
+                margin:       10, // Marges en mm
+                filename:     'Mon_Dossier_Competences.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 }, // Meilleure résolution
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Exécution
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+</body>
+</html>

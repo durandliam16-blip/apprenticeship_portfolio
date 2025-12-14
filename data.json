@@ -1,0 +1,64 @@
+{
+  "nodes": [
+    { "id": 0, "label": "MON BOOK", "group": "center", "font": { "size": 22 } },
+
+    { "id": 1, "label": "🏢 Entreprise\n(TechSolutions)", "group": "project" },
+    { "id": 2, "label": "🎓 École\n(Master II)", "group": "project" },
+
+    { "id": 11, "label": "React JS", "group": "tech" },
+    { "id": 12, "label": "Travail d'équipe", "group": "social" },
+    { "id": 13, "label": "Jira / Agile", "group": "transverse" },
+
+    { "id": 21, "label": "UX Design", "group": "tech" },
+    { "id": 22, "label": "Anglais Pro", "group": "transverse" },
+    { "id": 23, "label": "Leadership", "group": "social" }
+  ],
+  "edges": [
+    { "from": 0, "to": 1, "width": 4 },
+    { "from": 0, "to": 2, "width": 4 },
+    { "from": 1, "to": 11 },
+    { "from": 1, "to": 12 },
+    { "from": 1, "to": 13 },
+    { "from": 2, "to": 21 },
+    { "from": 2, "to": 22 },
+    { "from": 2, "to": 23 }
+  ],
+  "popupContent": {
+    "11": {
+      "title": "Développement React",
+      "type": "mission",
+      "context": "entreprise",
+      "detail": "Développement de composants UI. <br><strong>Résultat :</strong> Refonte du dashboard client."
+    },
+    "12": {
+      "title": "Cohésion d'équipe",
+      "type": "competence",
+      "context": "entreprise",
+      "detail": "Communication active avec les équipes Back-end et Design pour aligner les besoins."
+    },
+    "13": {
+      "title": "Gestion Agile",
+      "type": "mission",
+      "context": "entreprise",
+      "detail": "Utilisation quotidienne de Jira pour le suivi des tickets et participation aux rituels Scrum."
+    },
+    "21": {
+      "title": "UX / UI Design",
+      "type": "competence",
+      "context": "ecole",
+      "detail": "Apprentissage des lois de Gestalt et prototypage sur Figma."
+    },
+    "22": {
+      "title": "Anglais Technique",
+      "type": "competence",
+      "context": "ecole",
+      "detail": "Rédaction de documentation technique et passage du TOEIC (Score : 850)."
+    },
+    "23": {
+      "title": "Leadership",
+      "type": "mission",
+      "context": "ecole",
+      "detail": "Gestion d'un groupe de 5 étudiants pour le projet de fin d'année."
+    }
+  }
+}
