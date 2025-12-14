@@ -3,111 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio Dynamique</title>
+    <title>Mon Portfolio Structuré</title>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
-        /* --- VARIABLES DE COULEURS --- */
+        /* --- VARIABLES & COULEURS --- */
         :root {
-            --col-entreprise: #3498db; /* Bleu */
-            --col-ecole: #e67e22;      /* Orange */
-            --col-autre: #9b59b6;      /* Violet */
-            
+            --col-entreprise: #3498db;
+            --col-ecole: #e67e22;
+            --col-autre: #9b59b6;
             --bg-color: #f4f7f6;
             --text-color: #333;
         }
 
         body { margin: 0; padding: 0; background: var(--bg-color); font-family: 'Segoe UI', sans-serif; overflow: hidden; }
-        #mynetwork { width: 100vw; height: 100vh; }
+        
+        /* Conteneur principal */
+        #mynetwork { 
+            width: 100vw; 
+            height: 100vh; 
+            background: radial-gradient(circle, #ffffff 0%, #e0e0e0 100%);
+        }
+
+        /* --- BARRE DE CHARGEMENT --- */
+        #loadingWrapper {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.9); z-index: 900;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            transition: opacity 0.5s;
+        }
+        #loadingBarContainer {
+            width: 300px; height: 10px; background: #ddd; border-radius: 5px; overflow: hidden;
+        }
+        #bar {
+            width: 0%; height: 100%; background: #2ecc71; transition: width 0.2s;
+        }
+        #loadingText {
+            margin-top: 15px; color: #555; font-size: 16px; font-weight: bold;
+        }
+
+        /* --- LE BOUTON PDF --- */
+        .btn-pdf {
+            position: absolute; top: 20px; right: 20px;
+            background-color: #e74c3c; color: white;
+            text-decoration: none; padding: 12px 25px;
+            border-radius: 30px; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 100; transition: transform 0.2s, background-color 0.2s;
+            display: flex; align-items: center; gap: 10px; font-size: 14px;
+        }
+        .btn-pdf:hover { transform: scale(1.05); background-color: #c0392b; }
 
         /* --- STYLES DU POP-UP --- */
         .modal-overlay {
-            display: none;
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.6); /* Fond clair flouté */
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-            justify-content: center; align-items: center;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(5px);
+            z-index: 1000; justify-content: center; align-items: center;
         }
-
         .modal-card {
-            background: white;
-            width: 90%; max-width: 500px;
-            border-radius: 20px;
-            padding: 0; /* Padding géré par les enfants */
+            background: white; width: 90%; max-width: 500px;
+            border-radius: 20px; padding: 0;
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s;
-            animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 4px solid #333; /* Bordure par défaut */
+            position: relative; overflow: hidden;
+            border: 4px solid #333;
+            transform: scale(0.9); opacity: 0; transition: all 0.3s ease;
         }
+        .modal-overlay.active .modal-card { transform: scale(1); opacity: 1; }
 
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-        /* En-tête du Pop-up */
-        .modal-header {
-            padding: 20px;
-            color: white;
-            text-align: center;
-        }
-        .modal-header h2 { margin: 0; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px; }
+        .modal-header { padding: 20px; color: white; text-align: center; }
+        .modal-header h2 { margin: 0; font-size: 1.5rem; text-transform: uppercase; }
         .modal-header p { margin: 5px 0 0 0; font-style: italic; opacity: 0.9; }
-
-        /* Corps du Pop-up */
         .modal-body { padding: 25px; color: var(--text-color); line-height: 1.6; }
         .separator { height: 4px; width: 50px; background: #333; margin: 0 auto 20px auto; border-radius: 2px; }
-
-        .close-btn {
-            position: absolute; top: 10px; right: 15px;
-            color: white; font-size: 24px; cursor: pointer; font-weight: bold;
-            opacity: 0.8; transition: 0.2s;
-        }
-        .close-btn:hover { opacity: 1; transform: scale(1.1); }
-
-        /* --- THEMES AUTOMATIQUES (Gérés par JS) --- */
+        .close-btn { position: absolute; top: 10px; right: 15px; color: white; font-size: 24px; cursor: pointer; font-weight: bold; }
         
-        /* Thème ENTREPRISE */
+        /* Thèmes Pop-up */
         .modal-card.theme-entreprise { border-color: var(--col-entreprise); }
-        .modal-card.theme-entreprise .modal-header { background-color: var(--col-entreprise); }
-        .modal-card.theme-entreprise .separator { background-color: var(--col-entreprise); }
-
-        /* Thème ÉCOLE */
+        .modal-card.theme-entreprise .modal-header, .modal-card.theme-entreprise .separator { background-color: var(--col-entreprise); }
         .modal-card.theme-ecole { border-color: var(--col-ecole); }
-        .modal-card.theme-ecole .modal-header { background-color: var(--col-ecole); }
-        .modal-card.theme-ecole .separator { background-color: var(--col-ecole); }
-
-        /* Thème AUTRE/DEFAULT */
+        .modal-card.theme-ecole .modal-header, .modal-card.theme-ecole .separator { background-color: var(--col-ecole); }
         .modal-card.theme-autre { border-color: var(--col-autre); }
         .modal-card.theme-autre .modal-header { background-color: var(--col-autre); }
-
-        /* --- LE BOUTON PDF (Nouveau) --- */
-        .btn-pdf {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #e74c3c; /* Rouge style PDF */
-            color: white;
-            text-decoration: none; /* Enlève le souligné du lien */
-            padding: 12px 25px;
-            border-radius: 30px; /* Bord arrondi comme le reste */
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 100; /* Pour être sûr qu'il soit AU-DESSUS de la carte */
-            transition: transform 0.2s, background-color 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 14px;
-        }
-
-        .btn-pdf:hover {
-            transform: scale(1.05); /* Petit effet de zoom */
-            background-color: #c0392b; /* Rouge un peu plus foncé */
-        }
     </style>
 </head>
 <body>
+
     <a href="generateur_pdf.html" target="_blank" class="btn-pdf">📄 Version PDF</a>
+
+    <div id="loadingWrapper">
+        <div id="loadingBarContainer"><div id="bar"></div></div>
+        <div id="loadingText">Stabilisation de la carte...</div>
+    </div>
+
     <div id="mynetwork"></div>
 
     <div id="popup" class="modal-overlay" onclick="closePopup(event)">
@@ -115,55 +102,72 @@
             <div class="modal-header">
                 <span class="close-btn" onclick="forceClose()">&times;</span>
                 <h2 id="popup-title">TITRE</h2>
-                <p id="popup-subtitle">Mission / Compétence</p>
+                <p id="popup-subtitle">...</p>
             </div>
             <div class="modal-body">
                 <div class="separator"></div>
-                <div id="popup-detail">Description...</div>
+                <div id="popup-detail">...</div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- CONFIGURATION VIS.JS ---
-        // Définition des couleurs des boules (Nodes) selon leur groupe
+        // --- CONFIGURATION STABLE ---
         const options = {
             nodes: {
                 borderWidth: 2,
                 shadow: true,
-                font: { color: '#fff', size: 16 }
+                font: { color: '#333', size: 16, strokeWidth: 4, strokeColor: '#fff' }
             },
-            // C'est ici que tu gères les couleurs des compétences (Tech, Social, etc.)
             groups: {
-                center: { shape: 'box', color: '#333', font: {size: 24} },
-                project: { shape: 'box', color: '#fff', font: {color:'#333'}, margin: 10 },
-                
-                // Catégories de compétences
-                tech: { shape: 'dot', color: '#e74c3c' },       /* Rouge pour technique */
-                social: { shape: 'dot', color: '#27ae60' },     /* Vert pour social */
-                transverse: { shape: 'dot', color: '#f1c40f' }  /* Jaune pour transverse */
+                center: { shape: 'box', color: '#333', font: {size: 30, color: '#fff'} },
+                project: { shape: 'box', color: '#fff', font: {size: 20}, margin: 15, borderWidth: 3 },
+                tech: { shape: 'dot', color: '#e74c3c', size: 15 },
+                social: { shape: 'dot', color: '#27ae60', size: 15 },
+                transverse: { shape: 'dot', color: '#f1c40f', size: 15 }
             },
             edges: {
-                width: 2,
-                color: { color: '#bdc3c7', highlight: '#333' },
-                smooth: true
+                width: 1,
+                color: { color: '#bdc3c7', inherit: 'from' },
+                smooth: { type: 'continuous', roundness: 0 } // Lignes droites = plus propre
             },
             physics: {
-                stabilization: false,
-                barnesHut: { gravitationalConstant: -3000, springLength: 180 }
+                enabled: true, // On l'active au début pour placer les points
+                solver: 'barnesHut',
+                barnesHut: {
+                    gravitationalConstant: -30000, // Répulsion forte mais contrôlée
+                    centralGravity: 0.1,           // Faible gravité pour éviter l'effet "tourbillon"
+                    springLength: 250,             // Liens longs pour aérer
+                    springConstant: 0.01,          // Liens souples
+                    damping: 0.5,                  // FRICTION ÉLEVÉE (C'est ça qui empêche de tourner !)
+                    avoidOverlap: 1
+                },
+                stabilization: {
+                    enabled: true,
+                    iterations: 1500, // On calcule 1500 fois avant d'afficher
+                    updateInterval: 50,
+                    fit: true
+                }
             },
-            interaction: { hover: true }
+            layout: {
+                randomSeed: 2 // Pour avoir toujours le même résultat au chargement
+            },
+            interaction: { 
+                hover: true, 
+                dragNodes: true, // Tu peux toujours bouger les points à la main
+                zoomView: true, 
+                dragView: true 
+            }
         };
 
         let popupData = {};
 
-        // Chargement du JSON
         fetch('data.json')
             .then(res => res.json())
             .then(data => {
                 popupData = data.popupContent;
-
                 const container = document.getElementById('mynetwork');
+                
                 const networkData = {
                     nodes: new vis.DataSet(data.nodes),
                     edges: new vis.DataSet(data.edges)
@@ -171,46 +175,77 @@
                 
                 const network = new vis.Network(container, networkData, options);
 
+                // --- GESTION DU CHARGEMENT ---
+                network.on("stabilizationProgress", function (params) {
+                    const widthFactor = params.iterations / params.total;
+                    document.getElementById('bar').style.width = Math.round(widthFactor * 100) + '%';
+                });
+
+                // --- QUAND C'EST FINI, ON FIGE TOUT ---
+                network.on("stabilizationIterationsDone", function () {
+                    document.getElementById('loadingText').innerText = "Prêt !";
+                    document.getElementById('bar').style.width = '100%';
+                    
+                    // 1. On désactive la physique pour que ça ne bouge plus du tout
+                    network.setOptions({ physics: { enabled: false } });
+                    
+                    // 2. On cache l'écran de chargement en douceur
+                    setTimeout(() => {
+                        const loader = document.getElementById('loadingWrapper');
+                        loader.style.opacity = 0;
+                        setTimeout(() => loader.style.display = 'none', 500);
+                    }, 200);
+                });
+
+                // --- CLIC SUR UN NOEUD ---
                 network.on("click", function (params) {
                     if (params.nodes.length > 0) {
                         const nodeId = params.nodes[0];
+                        
+                        // Petit zoom sympa
+                        network.focus(nodeId, {
+                            scale: 1.2,
+                            animation: { duration: 500, easingFunction: "easeInOutQuad" }
+                        });
+
                         const content = popupData[nodeId];
                         if (content) openPopup(content);
                     }
                 });
             })
-            .catch(err => console.error("Erreur JSON. Utilise Live Server !", err));
+            .catch(err => {
+                console.error("Erreur JSON:", err);
+                document.getElementById('loadingText').innerText = "Erreur : Lance avec Live Server !";
+            });
 
-        // --- GESTION DU POP-UP ---
+        // --- FONCTIONS POPUP ---
         function openPopup(content) {
+            const overlay = document.getElementById('popup');
             const card = document.getElementById('popup-card');
             
-            // 1. Remplissage du texte
             document.getElementById('popup-title').innerHTML = content.title;
             document.getElementById('popup-subtitle').innerHTML = (content.type + " - " + content.context).toUpperCase();
             document.getElementById('popup-detail').innerHTML = content.detail;
 
-            // 2. Gestion automatique du style (Couleur)
-            // On enlève les anciennes classes
+            // Reset classes
             card.className = "modal-card"; 
             
-            // On ajoute la classe selon le contexte défini dans le JSON
-            if (content.context === 'entreprise') {
-                card.classList.add('theme-entreprise');
-            } else if (content.context === 'ecole') {
-                card.classList.add('theme-ecole');
-            } else {
-                card.classList.add('theme-autre');
-            }
+            if (content.context === 'entreprise') card.classList.add('theme-entreprise');
+            else if (content.context === 'ecole') card.classList.add('theme-ecole');
+            else card.classList.add('theme-autre');
 
-            document.getElementById('popup').style.display = 'flex';
+            overlay.style.display = 'flex';
+            // Petit délai pour l'animation CSS
+            setTimeout(() => { overlay.classList.add('active'); }, 10);
         }
 
         function closePopup(e) {
-            if (e.target.id === 'popup') document.getElementById('popup').style.display = 'none';
+            if (e.target.id === 'popup') forceClose();
         }
         function forceClose() {
-            document.getElementById('popup').style.display = 'none';
+            const overlay = document.getElementById('popup');
+            overlay.classList.remove('active');
+            setTimeout(() => { overlay.style.display = 'none'; }, 300);
         }
     </script>
 </body>
