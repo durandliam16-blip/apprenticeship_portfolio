@@ -8,56 +8,59 @@
     <style>
         /* --- VARIABLES & COULEURS --- */
         :root {
-            --col-entreprise: #3498db;
-            --col-ecole: #e67e22;
-            --col-autre: #9b59b6;
-            --bg-color: #f4f7f6;
-            --text-color: #333;
+            --col-entreprise: #3498db; --col-ecole: #e67e22; --col-autre: #9b59b6;
+            --bg-color: #f4f7f6; --text-color: #333; --btn-color: #e74c3c; --btn-hover: #c0392b;
         }
 
         body { margin: 0; padding: 0; background: var(--bg-color); font-family: 'Segoe UI', sans-serif; overflow: hidden; }
         
-        /* Conteneur principal */
         #mynetwork { 
-            width: 100vw; 
-            height: 100vh; 
+            width: 100vw; height: 100vh; 
             background: radial-gradient(circle, #ffffff 0%, #e0e0e0 100%);
+        }
+
+        /* --- MENU EN HAUT À DROITE --- */
+        .menu-container {
+            position: absolute; top: 20px; right: 20px;
+            display: flex; flex-direction: column; gap: 10px; align-items: flex-end;
+            z-index: 100;
+        }
+
+        .btn-menu {
+            background-color: var(--btn-color); color: white;
+            text-decoration: none; padding: 10px 20px;
+            border-radius: 30px; font-weight: bold; font-size: 14px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); border: none; cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+            display: flex; align-items: center; gap: 10px; width: fit-content;
+        }
+        .btn-menu:hover { transform: scale(1.05); background-color: var(--btn-hover); }
+
+        /* Style spécifique pour le Select */
+        select.btn-menu {
+            appearance: none; -webkit-appearance: none;
+            padding-right: 35px; /* Espace pour la flèche */
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px top 50%;
+            background-size: 12px auto;
         }
 
         /* --- BARRE DE CHARGEMENT --- */
         #loadingWrapper {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255,255,255,0.9); z-index: 900;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            transition: opacity 0.5s;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s; pointer-events: none;
         }
-        #loadingBarContainer {
-            width: 300px; height: 10px; background: #ddd; border-radius: 5px; overflow: hidden;
-        }
-        #bar {
-            width: 0%; height: 100%; background: #2ecc71; transition: width 0.2s;
-        }
-        #loadingText {
-            margin-top: 15px; color: #555; font-size: 16px; font-weight: bold;
-        }
+        #loadingBarContainer { width: 300px; height: 10px; background: #ddd; border-radius: 5px; overflow: hidden; }
+        #bar { width: 0%; height: 100%; background: #2ecc71; transition: width 0.2s; }
+        #loadingText { margin-top: 15px; color: #555; font-size: 16px; font-weight: bold; }
 
-        /* --- LE BOUTON PDF --- */
-        .btn-pdf {
-            position: absolute; top: 20px; right: 20px;
-            background-color: #e74c3c; color: white;
-            text-decoration: none; padding: 12px 25px;
-            border-radius: 30px; font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 100; transition: transform 0.2s, background-color 0.2s;
-            display: flex; align-items: center; gap: 10px; font-size: 14px;
-        }
-        .btn-pdf:hover { transform: scale(1.05); background-color: #c0392b; }
-
-        /* --- STYLES DU POP-UP --- */
+        /* --- STYLES DU POP-UP & MODALS --- */
         .modal-overlay {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px);
             z-index: 1000; justify-content: center; align-items: center;
         }
         .modal-card {
@@ -70,29 +73,37 @@
         }
         .modal-overlay.active .modal-card { transform: scale(1); opacity: 1; }
 
-        .modal-header { padding: 20px; color: white; text-align: center; }
+        .modal-header { padding: 20px; color: white; text-align: center; background: #333; }
         .modal-header h2 { margin: 0; font-size: 1.5rem; text-transform: uppercase; }
-        .modal-header p { margin: 5px 0 0 0; font-style: italic; opacity: 0.9; }
-        .modal-body { padding: 25px; color: var(--text-color); line-height: 1.6; }
-        .separator { height: 4px; width: 50px; background: #333; margin: 0 auto 20px auto; border-radius: 2px; }
+        .modal-body { padding: 25px; color: var(--text-color); line-height: 1.6; max-height: 60vh; overflow-y: auto; }
         .close-btn { position: absolute; top: 10px; right: 15px; color: white; font-size: 24px; cursor: pointer; font-weight: bold; }
         
-        /* Thèmes Pop-up */
+        /* Thèmes Pop-up Dynamique */
         .modal-card.theme-entreprise { border-color: var(--col-entreprise); }
-        .modal-card.theme-entreprise .modal-header, .modal-card.theme-entreprise .separator { background-color: var(--col-entreprise); }
+        .modal-card.theme-entreprise .modal-header { background-color: var(--col-entreprise); }
         .modal-card.theme-ecole { border-color: var(--col-ecole); }
-        .modal-card.theme-ecole .modal-header, .modal-card.theme-ecole .separator { background-color: var(--col-ecole); }
-        .modal-card.theme-autre { border-color: var(--col-autre); }
-        .modal-card.theme-autre .modal-header { background-color: var(--col-autre); }
+        .modal-card.theme-ecole .modal-header { background-color: var(--col-ecole); }
+        .modal-card.theme-info .modal-header { background-color: #34495e; } 
+
     </style>
 </head>
 <body>
 
-    <a href="generateur_pdf.html" target="_blank" class="btn-pdf">📄 Version PDF</a>
+    <div class="menu-container">
+        <select id="semester-select" class="btn-menu" onchange="changeSemester(this.value)">
+            <option value="data_s5.json" selected>📅 Semestre 5</option>
+            <option value="data_s6.json">📅 Semestre 6 (À venir)</option>
+            <option value="data_s7.json">📅 Semestre 7 (À venir)</option>
+        </select>
+
+        <a href="generateur_pdf.html" target="_blank" class="btn-menu">📄 Version écrite et PDF</a>
+        <button class="btn-menu" onclick="openStaticModal('role')">👤 Qui suis-je ?</button>
+        <button class="btn-menu" onclick="openStaticModal('guide')">❔ Guide d'utilisation</button>
+    </div>
 
     <div id="loadingWrapper">
         <div id="loadingBarContainer"><div id="bar"></div></div>
-        <div id="loadingText">Stabilisation de la carte...</div>
+        <div id="loadingText">Chargement des données...</div>
     </div>
 
     <div id="mynetwork"></div>
@@ -100,153 +111,249 @@
     <div id="popup" class="modal-overlay" onclick="closePopup(event)">
         <div id="popup-card" class="modal-card">
             <div class="modal-header">
-                <span class="close-btn" onclick="forceClose()">&times;</span>
+                <span class="close-btn" onclick="forceClose('popup')">&times;</span>
                 <h2 id="popup-title">TITRE</h2>
-                <p id="popup-subtitle">...</p>
+                <p id="popup-subtitle" style="font-style:italic; opacity:0.8; margin-top:5px">...</p>
             </div>
             <div class="modal-body">
-                <div class="separator"></div>
+                <div style="height:4px; width:50px; background:#333; margin:0 auto 20px auto; border-radius:2px;" id="popup-sep"></div>
                 <div id="popup-detail">...</div>
             </div>
         </div>
     </div>
 
-    <script>
-        // --- CONFIGURATION STABLE ---
-        const options = {
-            nodes: {
-                borderWidth: 2,
-                shadow: true,
-                font: { color: '#333', size: 16, strokeWidth: 4, strokeColor: '#fff' }
-            },
-            groups: {
-                center: { shape: 'box', color: '#333', font: {size: 30, color: '#fff'} },
-                project: { shape: 'box', color: '#fff', font: {size: 20}, margin: 15, borderWidth: 3 },
-                tech: { shape: 'dot', color: '#e74c3c', size: 15 },
-                social: { shape: 'dot', color: '#27ae60', size: 15 },
-                transverse: { shape: 'dot', color: '#f1c40f', size: 15 }
-            },
-            edges: {
-                width: 1,
-                color: { color: '#bdc3c7', inherit: 'from' },
-                smooth: { type: 'continuous', roundness: 0 } // Lignes droites = plus propre
-            },
-            physics: {
-                enabled: true, // On l'active au début pour placer les points
-                solver: 'barnesHut',
-                barnesHut: {
-                    gravitationalConstant: -30000, // Répulsion forte mais contrôlée
-                    centralGravity: 0.1,           // Faible gravité pour éviter l'effet "tourbillon"
-                    springLength: 250,             // Liens longs pour aérer
-                    springConstant: 0.01,          // Liens souples
-                    damping: 0.5,                  // FRICTION ÉLEVÉE (C'est ça qui empêche de tourner !)
-                    avoidOverlap: 1
-                },
-                stabilization: {
-                    enabled: true,
-                    iterations: 1500, // On calcule 1500 fois avant d'afficher
-                    updateInterval: 50,
-                    fit: true
-                }
-            },
-            layout: {
-                randomSeed: 2 // Pour avoir toujours le même résultat au chargement
-            },
-            interaction: { 
-                hover: true, 
-                dragNodes: true, // Tu peux toujours bouger les points à la main
-                zoomView: true, 
-                dragView: true 
-            }
-        };
+    <div id="static-modal" class="modal-overlay" onclick="closePopup(event)">
+        <div class="modal-card theme-info">
+            <div class="modal-header">
+                <span class="close-btn" onclick="forceClose('static-modal')">&times;</span>
+                <h2 id="static-title">TITRE</h2>
+            </div>
+            <div class="modal-body" id="static-body">
+            </div>
+        </div>
+    </div>
 
+    <script>
+        let network = null;
         let popupData = {};
 
-        fetch('data.json')
-            .then(res => res.json())
-            .then(data => {
-                popupData = data.popupContent;
-                const container = document.getElementById('mynetwork');
+        // Configuration Vis.js
+        const options = {
+            nodes: {
+                borderWidth: 2, shadow: true,
+                font: { color: '#333', size: 16 }
+            },
+            groups: {
+                // CENTRE (Titre principal)
+                center: { 
+                    shape: 'box', 
+                    color: '#333', 
+                    font: {size: 30, color: '#fff'}, 
+                    margin: 20 
+                },
                 
-                const networkData = {
-                    nodes: new vis.DataSet(data.nodes),
-                    edges: new vis.DataSet(data.edges)
-                };
-                
-                const network = new vis.Network(container, networkData, options);
+                // PROJETS PRINCIPAUX (Entreprise, Ecole...)
+                project: { 
+                    shape: 'box', 
+                    color: { background: '#ffffff', border: '#333' }, 
+                    font: { size: 22, color: '#333', face: 'Segoe UI',  multi: 'html' }, 
+                    margin: 20, 
+                    borderWidth: 3,
+                    shadow: true
+                },
 
-                // --- GESTION DU CHARGEMENT ---
-                network.on("stabilizationProgress", function (params) {
-                    const widthFactor = params.iterations / params.total;
-                    document.getElementById('bar').style.width = Math.round(widthFactor * 100) + '%';
-                });
+                // MISSIONS (Entreprise) -> BOITES VIOLETTES
+                mission: { 
+                    shape: 'box', 
+                    shapeProperties: { borderRadius: 8 }, 
+                    color: { background: '#f4ecf7', border: '#8e44ad' }, 
+                    font: { size: 16, color: '#4a235a' }, 
+                    margin: 15, 
+                    borderWidth: 2
+                },
 
-                // --- QUAND C'EST FINI, ON FIGE TOUT ---
-                network.on("stabilizationIterationsDone", function () {
-                    document.getElementById('loadingText').innerText = "Prêt !";
-                    document.getElementById('bar').style.width = '100%';
+                // MATIERES / PROJETS ECOLE -> BOITES JAUNES (C'est ça qu'il manquait !)
+                school: { 
+                    shape: 'box', 
+                    shapeProperties: { borderRadius: 8 },
+                    color: { background: '#fef9e7', border: '#f1c40f' }, 
+                    font: { size: 16, color: '#7d6608' }, 
+                    margin: 15,
+                    borderWidth: 2
+                },
+
+                // COMPETENCES (Feuilles) -> Restent des POINTS (Dots)
+                tech: { shape: 'dot', color: '#e74c3c', size: 12 },
+                social: { shape: 'dot', color: '#27ae60', size: 12 },
+                soft: { shape: 'dot', color: '#2ecc71', size: 12 }
+            },
+            edges: {
+                width: 1, color: { color: '#bdc3c7', inherit: 'from' },
+                smooth: { type: 'continuous', roundness: 0 }
+            },
+            physics: {
+                enabled: true, solver: 'barnesHut',
+                barnesHut: {
+                    gravitationalConstant: -40000, // Forte répulsion pour bien écarter les boites
+                    centralGravity: 0.1,
+                    springLength: 350, // Liens longs pour éviter le chevauchement
+                    springConstant: 0.01,
+                    damping: 0.5, 
+                    avoidOverlap: 1
+                },
+                stabilization: { enabled: true, iterations: 2000, updateInterval: 50, fit: true }
+            },
+            interaction: { hover: true, dragNodes: true, zoomView: true }
+        };
+
+        // --- FONCTION CHARGEMENT ---
+        function loadGraph(jsonFile) {
+            const loader = document.getElementById('loadingWrapper');
+            loader.style.display = 'flex';
+            loader.style.opacity = 1;
+            document.getElementById('bar').style.width = '0%';
+            document.getElementById('loadingText').innerText = "Chargement : " + jsonFile;
+
+            fetch(jsonFile)
+                .then(res => {
+                    if(!res.ok) throw new Error("Fichier introuvable");
+                    return res.json();
+                })
+                .then(data => {
+                    popupData = data.popupContent;
+                    const container = document.getElementById('mynetwork');
                     
-                    // 1. On désactive la physique pour que ça ne bouge plus du tout
-                    network.setOptions({ physics: { enabled: false } });
-                    
-                    // 2. On cache l'écran de chargement en douceur
-                    setTimeout(() => {
-                        const loader = document.getElementById('loadingWrapper');
-                        loader.style.opacity = 0;
-                        setTimeout(() => loader.style.display = 'none', 500);
-                    }, 200);
-                });
-
-                // --- CLIC SUR UN NOEUD ---
-                network.on("click", function (params) {
-                    if (params.nodes.length > 0) {
-                        const nodeId = params.nodes[0];
-                        
-                        // Petit zoom sympa
-                        network.focus(nodeId, {
-                            scale: 1.2,
-                            animation: { duration: 500, easingFunction: "easeInOutQuad" }
-                        });
-
-                        const content = popupData[nodeId];
-                        if (content) openPopup(content);
+                    if (network !== null) {
+                        network.destroy();
+                        network = null;
                     }
-                });
-            })
-            .catch(err => {
-                console.error("Erreur JSON:", err);
-                document.getElementById('loadingText').innerText = "Erreur : Lance avec Live Server !";
-            });
 
-        // --- FONCTIONS POPUP ---
+                    const networkData = {
+                        nodes: new vis.DataSet(data.nodes),
+                        edges: new vis.DataSet(data.edges)
+                    };
+                    
+                    network = new vis.Network(container, networkData, options);
+
+                    network.on("stabilizationProgress", function (params) {
+                        const widthFactor = params.iterations / params.total;
+                        document.getElementById('bar').style.width = Math.round(widthFactor * 100) + '%';
+                    });
+
+                    network.on("stabilizationIterationsDone", function () {
+                        document.getElementById('loadingText').innerText = "Prêt !";
+                        document.getElementById('bar').style.width = '100%';
+                        network.setOptions({ physics: { enabled: false } }); // Figer
+                        
+                        setTimeout(() => {
+                            loader.style.opacity = 0;
+                            setTimeout(() => loader.style.display = 'none', 500);
+                        }, 200);
+                    });
+
+                    network.on("click", function (params) {
+                        if (params.nodes.length > 0) {
+                            const nodeId = params.nodes[0];
+                            network.focus(nodeId, { scale: 1.2, animation: { duration: 500 } });
+                            
+                            const content = popupData[nodeId];
+                            if (content) openPopup(content);
+                        }
+                    });
+                })
+                .catch(err => {
+                    console.error(err);
+                    document.getElementById('loadingText').innerText = "Erreur : Fichier JSON introuvable.";
+                });
+        }
+
+        function changeSemester(fileName) {
+            loadGraph(fileName);
+        }
+
         function openPopup(content) {
             const overlay = document.getElementById('popup');
             const card = document.getElementById('popup-card');
+            const sep = document.getElementById('popup-sep');
             
             document.getElementById('popup-title').innerHTML = content.title;
             document.getElementById('popup-subtitle').innerHTML = (content.type + " - " + content.context).toUpperCase();
             document.getElementById('popup-detail').innerHTML = content.detail;
 
-            // Reset classes
             card.className = "modal-card"; 
             
-            if (content.context === 'entreprise') card.classList.add('theme-entreprise');
-            else if (content.context === 'ecole') card.classList.add('theme-ecole');
-            else card.classList.add('theme-autre');
+            if (content.context && content.context.toLowerCase() === 'entreprise') {
+                card.classList.add('theme-entreprise');
+                sep.style.background = 'var(--col-entreprise)';
+            } else if (content.context && content.context.toLowerCase() === 'ecole') {
+                card.classList.add('theme-ecole');
+                sep.style.background = 'var(--col-ecole)';
+            } else {
+                card.classList.add('theme-info');
+                sep.style.background = '#333';
+            }
 
             overlay.style.display = 'flex';
-            // Petit délai pour l'animation CSS
             setTimeout(() => { overlay.classList.add('active'); }, 10);
         }
 
+        const staticContent = {
+            'role': {
+                title: "Qui suis-je ?",
+                body: `
+                    <h3>🏢 ADEME </h3>
+                    <p>Je suis alternant en tant que Data ingénieur à l'agence gouvernementale de la transition écologique.</p>
+                    <p> Je fait partie d'une équipe nommé 'FDLD' en charge de la gestion des bases de données qui servent ensuite aux Data analysts et métiers.
+                    <p><strong>Mes missions principales :</strong> Accompagner mon tuteur dans ses projets et participer à la prise en main et la mise en place de meilleurs outils data.</p>
+                    <hr>
+                    <h3>🎓 Polytech </h3>
+                    <p>Actuellement en 3ème année de cycle d'ingénieur en IDIA (Ingéniérie des données et de l'IA).</p>
+                    <p> Nous développons beaucoup de compétences informatiques mais aussi des complémentaires et nécessaires au métier d'ingénieur tel que la science sociale.</p>
+                `
+            },
+            'guide': {
+                title: "Guide d'Utilisation",
+                body: `
+                    <ul>
+                        <li><strong>Zoomer/Dézoomer :</strong> Utilisez la molette de la souris.</li>
+                        <li><strong>Déplacer :</strong> Cliquez et glissez dans le vide.</li>
+                        <li><strong>Détails :</strong> Cliquez sur une bulle pour voir toutes les informations expliquant la mission ou la compétence.</li>
+                        <li><strong>PDF :</strong> Cliquez sur le bouton en haut à droite pour générer un rapport imprimable reprenant toute la mindmap.</li>
+                    </ul>
+                    <p><em>Astuce : Les bulles compétences sont coloriées par catégorie : <br> - Compétences de codage en rouge <br> - Apprentissage des fondamentaux en rouge <br> - Développement des capacités sociales en vert.</em></p>
+                `
+            }
+        };
+
+        function openStaticModal(type) {
+            const overlay = document.getElementById('static-modal');
+            const title = document.getElementById('static-title');
+            const body = document.getElementById('static-body');
+            
+            if(staticContent[type]) {
+                title.innerHTML = staticContent[type].title;
+                body.innerHTML = staticContent[type].body;
+                overlay.style.display = 'flex';
+                setTimeout(() => { overlay.classList.add('active'); }, 10);
+            }
+        }
+
         function closePopup(e) {
-            if (e.target.id === 'popup') forceClose();
+            if (e.target.classList.contains('modal-overlay')) {
+                e.target.classList.remove('active');
+                setTimeout(() => { e.target.style.display = 'none'; }, 300);
+            }
         }
-        function forceClose() {
-            const overlay = document.getElementById('popup');
-            overlay.classList.remove('active');
-            setTimeout(() => { overlay.style.display = 'none'; }, 300);
+        function forceClose(id) {
+            const el = document.getElementById(id);
+            el.classList.remove('active');
+            setTimeout(() => { el.style.display = 'none'; }, 300);
         }
+
+        window.onload = function() {
+            const defaultFile = document.getElementById('semester-select').value;
+            loadGraph(defaultFile);
+        };
     </script>
 </body>
 </html>
