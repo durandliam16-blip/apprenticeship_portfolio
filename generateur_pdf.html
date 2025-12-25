@@ -14,7 +14,7 @@
         }
         body { font-family: 'Segoe UI', sans-serif; background: var(--col-bg); margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
         
-        /* BARRE D'OUTILS (Non imprimée) */
+        /* BARRE D'OUTILS */
         .toolbar {
             background: #fff; padding: 15px 30px; border-radius: 8px; margin-bottom: 30px;
             display: flex; gap: 20px; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.2);
@@ -26,11 +26,10 @@
         }
         #btn-download:hover { background-color: #c0392b; }
 
-        /* Switch Checkbox */
         .toggle-label { font-size: 14px; font-weight: bold; color: #333; cursor: pointer; display: flex; align-items: center; gap: 10px;}
         input[type="checkbox"] { transform: scale(1.5); cursor: pointer; }
 
-        /* FEUILLE A4 */
+        /* DOCUMENT A4 */
         #report-content {
             background: white; width: 210mm; min-height: 297mm; padding: 20mm;
             box-sizing: border-box; box-shadow: 0 0 15px rgba(0,0,0,0.5);
@@ -41,7 +40,19 @@
         .header h1 { color: var(--col-dark); font-size: 26px; text-transform: uppercase; margin: 0; }
         .header p { color: #7f8c8d; margin-top: 5px; font-size: 14px; }
 
-        /* STRUCTURE */
+        /* --- NOUVEAU : SECTION QUI SUIS-JE --- */
+        .intro-box {
+            background-color: #f9f9f9;
+            border-left: 5px solid var(--col-dark);
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 5px;
+            page-break-inside: avoid;
+        }
+        .intro-box h3 { margin-top: 0; color: var(--col-dark); border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .intro-box p { font-size: 14px; color: #555; line-height: 1.5; text-align: justify; margin-bottom: 10px; }
+
+        /* STRUCTURE GENERALE */
         .main-section { margin-bottom: 40px; page-break-inside: avoid; }
         .section-title {
             font-size: 22px; color: white; padding: 10px 20px; border-radius: 5px; margin-bottom: 20px;
@@ -50,12 +61,9 @@
         .bg-entreprise { background-color: var(--col-entreprise); }
         .bg-ecole { background-color: var(--col-ecole); }
 
-        /* BLOC MISSION (PARENT) */
+        /* BLOCS */
         .mission-block {
-            border-left: 6px solid #ccc;
-            margin-bottom: 30px;
-            padding-left: 20px;
-            page-break-inside: avoid; /* Évite de couper une mission au milieu */
+            border-left: 6px solid #ccc; margin-bottom: 30px; padding-left: 20px; page-break-inside: avoid;
         }
         .mission-block.entreprise { border-color: var(--col-entreprise); }
         .mission-block.ecole { border-color: var(--col-ecole); }
@@ -64,39 +72,28 @@
         .mission-title { font-size: 18px; font-weight: 700; color: #2c3e50; margin-bottom: 8px; }
         .mission-desc { font-size: 14px; color: #555; margin-bottom: 15px; text-align: justify; line-height: 1.5; }
 
-        /* CONTENEUR COMPÉTENCES */
-        .skills-container {
-            margin-left: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #eee;
-        }
+        .skills-container { margin-left: 10px; padding-top: 10px; border-top: 1px dashed #eee; }
 
-        /* --- STYLE 1 : BADGES (Compact) --- */
+        /* STYLES COMPETENCES */
         .skills-compact { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-tag {
-            background: #f4f4f4; border: 1px solid #ddd;
-            padding: 4px 10px; border-radius: 12px;
-            font-size: 11px; font-weight: 600; color: #555;
-            display: flex; align-items: center; gap: 6px;
+            background: #f4f4f4; border: 1px solid #ddd; padding: 4px 10px; border-radius: 12px;
+            font-size: 11px; font-weight: 600; color: #555; display: flex; align-items: center; gap: 6px;
         }
 
-        /* --- STYLE 2 : LISTE DÉTAILLÉE (Complet) --- */
         .skills-detailed { display: flex; flex-direction: column; gap: 10px; }
         .skill-card {
-            background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 10px;
-            position: relative;
+            background: #fdfdfd; border: 1px solid #eee; border-radius: 8px; padding: 10px; position: relative;
         }
         .skill-card-title { font-size: 13px; font-weight: bold; color: #333; display: flex; align-items: center; gap: 8px; }
         .skill-card-desc { font-size: 12px; color: #666; margin-top: 4px; line-height: 1.4; padding-left: 18px; }
 
-        /* PASTILLES COULEURS */
         .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
         .dot-tech { background: #e74c3c; }
         .dot-soft { background: #2ecc71; }
         .dot-other { background: #f1c40f; }
 
         .footer { margin-top: 50px; text-align: center; font-size: 12px; color: #aaa; border-top: 1px solid #eee; padding-top: 10px; }
-
     </style>
 </head>
 <body>
@@ -112,30 +109,67 @@
     <div id="report-content">
         <div class="header">
             <h1>Dossier de Suivi - Alternance</h1>
-            <p>Synthèse Hiérarchique des Missions et Compétences</p>
+            <p>Synthèse des missions et compétences</p>
             <p><strong>Date :</strong> <span id="date-jour"></span></p>
         </div>
+
+        <div id="intro-injection"></div>
+
         <div id="content-injection"></div>
-        <div class="footer">Document généré automatiquement depuis le Portfolio Interactif.</div>
+
     </div>
 
     <script>
         document.getElementById('date-jour').innerText = new Date().toLocaleDateString('fr-FR');
-        let globalData = null; // Pour stocker le JSON
+        let globalData = null;
 
-        // 1. CHARGEMENT DES DONNÉES
+        // --- 1. CONFIGURATION DU TEXTE "QUI SUIS-JE" ---
+        // (Copié de ton index.html)
+        const staticIntro = `
+            <div class="intro-box">
+                <h3>👤 Qui suis-je ?</h3>
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:200px;">
+                        <h4 style="margin:5px 0; color:#3498db;">🏢 ADEME</h4>
+                        <p>Je suis alternant en tant que Data ingénieur au siège sociale de l'ADEME. C'est l'agence gouvernementale de la transition écologique à Angers.</p>
+                        <p>L'ADEME occupe un role important pour l'écologie en employant 1500 personnes en France. Elle a pour missions principales: l'accompagne de projets, l'attribution de subventions et la réalisation d'études scientifiques.</p>
+                        <p>Je fait personellement partie de la direction DSI (Direction des systèmes informatiques) mais plus précisément d'une équipe nommé 'FDLD'. Nous somme en charge de la gestion des bases de données de tout l'ADME qui servent ensuite aux Data analysts et corps de métiers.</p>
+                        <p><strong>Mes occupations principales</strong> sont d'accompagner mon tuteur dans ses projets et de participer au choix, mise en place et la prise en main de nouveaux outils data.</p>
+                    </div>
+                    <div style="flex:1; min-width:200px;">
+                        <h4 style="margin:5px 0; color:#e67e22;">🎓 Polytech</h4>
+                        <p>Actuellement en 3ème année de cycle d'ingénieur en IDIA (Ingéniérie des données et de l'IA) à Polytech Nantes. Je suis depuis longtemps passionné par les maths et l'informatique. Ainsi, étant l'année dernière en prépa intergrée à Polytech Clermont et ayant hate de rejoindre le monde professionelle, rejoindre cette specialité en alternance était une évidence pour moi.</p>
+                        <p>Nous développons beaucoup de compétences informatiques nécessaires tel que l'algorithmique mais aussi des complémentaires et nécessaires au métier d'ingénieur tel que la science sociale.</p>
+                        <br>
+                        <h4 style="margin:5px 0; color:#F87171;">💻 Projets personnel</h4>
+                        <p>En parallèle du travail et des études, j'aime bien me lancer plusieurs challenges et objectifs.</p>
+                        <p>Cela me permet de développer encore d'autres compétences sans contrainte ni pression.</p>
+                        <p><strong>J'aimerais plus tard etre Data scientist ou Ingénieur Data dans le domaine de la course à pied !</strong></p>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Injection immédiate de l'intro
+        document.getElementById('intro-injection').innerHTML = staticIntro;
+
+        // --- 2. CHARGEMENT DES DONNÉES JSON ---
+        // Assure-toi que le nom du fichier correspond bien à celui de ton dossier (ex: data_s5.json)
         fetch('data_s5.json')
             .then(res => res.json())
             .then(data => {
                 globalData = data;
-                renderContent(); // Premier affichage
+                renderContent();
             })
             .catch(err => {
-                document.getElementById('content-injection').innerHTML = "<p style='color:red; text-align:center'>Erreur : Impossible de lire data_s5.json. Lancez via Live Server.</p>";
-                console.error(err);
+                // Fallback si data_s5.json n'est pas trouvé (pour éviter l'erreur si tu as renommé)
+                 fetch('data/s5_projets.json').then(res=>res.json()).then(d=>{globalData=d; renderContent()})
+                 .catch(e => {
+                    document.getElementById('content-injection').innerHTML = "<p style='color:red; text-align:center'>Erreur : JSON introuvable (data_s5.json). Lancez via Live Server.</p>";
+                 });
             });
 
-        // 2. FONCTION DE RENDU (Appelée au chargement et au clic sur la checkbox)
+        // --- 3. FONCTION DE RENDU ---
         function renderContent() {
             if (!globalData) return;
 
@@ -145,7 +179,6 @@
             const edges = globalData.edges;
             const details = globalData.popupContent;
 
-            // --- Utilitaires ---
             const getNodeInfo = (id) => {
                 if (details[id]) return details[id];
                 const basicNode = nodes.find(n => n.id === id);
@@ -164,7 +197,6 @@
                 return 'dot-other';
             };
 
-            // --- Générateur de Section ---
             const generateSection = (rootId, title, cssClass) => {
                 const missionIds = getChildrenIds(rootId);
                 if (missionIds.length === 0) return '';
@@ -176,21 +208,16 @@
                     if (!missionInfo) return;
                     const skillIds = getChildrenIds(mId);
 
-                    // Bloc Mission
                     html += `
                     <div class="mission-block ${cssClass}">
                         <div class="mission-header">
                             <div class="mission-title">${missionInfo.title}</div>
                         </div>
                         <div class="mission-desc">${missionInfo.detail || "Description non disponible."}</div>
-                        
                         <div class="skills-container">`;
 
-                    // Gestion des Compétences (Enfants)
                     if (skillIds.length > 0) {
-                        // Choix de l'affichage selon la checkbox
                         if (showDetails) {
-                            // MODE DÉTAILLÉ
                             html += `<div class="skills-detailed">`;
                             skillIds.forEach(sId => {
                                 const skillInfo = getNodeInfo(sId);
@@ -205,7 +232,6 @@
                             });
                             html += `</div>`;
                         } else {
-                            // MODE COMPACT (BADGES)
                             html += `<div class="skills-compact">`;
                             skillIds.forEach(sId => {
                                 const skillInfo = getNodeInfo(sId);
@@ -219,14 +245,12 @@
                     } else {
                         html += `<small style="color:#aaa; font-style:italic;">Aucune sous-compétence liée.</small>`;
                     }
-
-                    html += `</div></div>`; // Fin skills-container & mission-block
+                    html += `</div></div>`;
                 });
                 html += `</div>`;
                 return html;
             };
 
-            // Injection
             let finalHTML = "";
             finalHTML += generateSection(1, "🏢 Entreprise (ADEME)", "entreprise");
             finalHTML += generateSection(2, "🎓 École (Polytech)", "ecole");
@@ -235,12 +259,10 @@
             container.innerHTML = finalHTML;
         }
 
-        // 3. REFRESH VIEW (Quand on clique sur la checkbox)
         function refreshView() {
             renderContent();
         }
 
-        // 4. GÉNÉRATION PDF
         function generatePDF() {
             const element = document.getElementById('report-content');
             const opt = {
