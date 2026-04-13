@@ -1,0 +1,399 @@
+{
+  "nodes": [
+    { "id": 0, "label": "📘 MON BOOK D’APPRENTISSAGE", "group": "center", "font": { "size": 30 } },
+
+    { "id": 1, "label": "🏢 Entreprise\n(ADEME - Fabrique de la donnée)", "group": "project" },
+    { "id": 2, "label": "🎓 École\n(Polytech Nantes – IDIA3)", "group": "project" },
+    { "id": 3, "label": "💻 Projets personnels \n (Par liam Drd)", "group": "project" },
+
+    { "id": 10, "label": "Refonte suivi \n des prestataires", "group": "mission", "color": "red" },
+    { "id": 11, "label": "Formation \n continue", "group": "mission" },
+    { "id": 12, "label": "Responsable d'un outil \n de dev", "group": "mission" },
+
+    { "id": 20, "label": "Algorithmique", "group": "school" },
+    { "id": 21, "label": "Developpement logiciel", "group": "school" , "color": "red"},
+    { "id": 22, "label": "Théorie des graphes", "group": "school" },
+    { "id": 23, "label": "Modèle et \n langage relationnel", "group": "school" },
+    { "id": 24, "label": "Systèmes informatique", "group": "school" },
+    { "id": 25, "label": "Logique", "group": "school" },
+    { "id": 26, "label": "Anglais", "group": "school" },
+    { "id": 27, "label": "Sciences sociales", "group": "school" },
+    { "id": 28, "label": "Economie", "group": "school" },
+
+    { "id": 30, "label": "Développent d'application \n de A à Z", "group": "project" },
+    { "id": 31, "label": "PSI", "group": "project" },
+
+    { "id": 101, "label": "Identification \n d'opportunités", "color": "red"},
+    { "id": 102, "label": "Sructuration \n des données", "color": "red", "shape": "diamond"},
+    { "id": 103, "label": "Prise en main \n de logiciel", "color": "red", "shape": "diamond"},
+    { "id": 110, "label": "Bien-etre au \n travail"},
+    { "id": 111, "label": "Data \n skills", "shape": "diamond"},
+    { "id": 112, "label": "Identification des \n acteurs et contraintes"},
+    { "id": 120, "label": "Compréhension \n des enjeux"},
+    { "id": 121, "label": "Compte-rendu en \n autonomie"},
+    { "id": 122, "label": "Codage en pluseurs \n langages","shape": "hexagon"},
+
+    { "id": 200, "label": "Gestion des \n données", "shape": "hexagon"},
+    { "id": 201, "label": "Culture \n informatique", "shape": "diamond"},
+    { "id": 202, "label": "Codage en \n python", "shape": "hexagon"},
+    { "id": 210, "label": "Travail \n en groupe", "color": "red"},
+    { "id": 211, "label": "Codage \n en python", "color": "red", "shape": "hexagon"},
+    { "id": 212, "label": "Gestion de \n projet dev", "color": "red"},
+    { "id": 220, "label": "Fondamentaux \n des graphes", "shape": "diamond"},
+    { "id": 230, "label": "Gestion des \n données", "shape": "diamond"},
+    { "id": 231, "label": "Data \n cleaning", "shape": "hexagon"},
+    { "id": 240, "label": "Culture \n informatique", "shape": "diamond"},
+    { "id": 241, "label": "Codage \n binaire", "shape": "hexagon"},
+    { "id": 250, "label": "Fondamentaux \n d'arithmétique", "shape": "diamond"},
+    { "id": 260, "label": "Apprentissage \n de nouveaux vocabulaires", "shape": "diamond"},
+    { "id": 270, "label": "Réflexions sur \n nos expériences et projets"},
+    { "id": 271, "label": "Bases de \n SSAT"},
+    { "id": 280, "label": "Fondamentaux de l'éco \n d'entreprise", "shape": "diamond"},
+
+    { "id": 300, "label": "Codage en pluseurs \n langages", "shape": "hexagon"},
+    { "id": 301, "label": "Création \n d'API", "shape": "hexagon"},
+    { "id": 302, "label": "Data \n processing", "shape": "hexagon"},
+    { "id": 303, "label": "Autonomie de \n travail"},
+
+    { "id": 310, "label": "Travail en \n autonomie"},
+    { "id": 311, "label": "Argumentation"}
+
+  ],
+
+  "edges": [
+    { "from": 0, "to": 1, "width": 40, "color": "gray" },
+    { "from": 0, "to": 2, "width": 40, "color": "gray" },
+    { "from": 0, "to": 3, "width": 40, "color": "gray" },
+
+    { "from": 1, "to": 10, "width": 15, "color": "red"},
+    { "from": 1, "to": 11, "width": 15 },
+    { "from": 1, "to": 12, "width": 15 },
+
+    { "from": 2, "to": 20, "width": 15 },
+    { "from": 2, "to": 21, "width": 15 , "color": "red"},
+    { "from": 2, "to": 22, "width": 15 },
+    { "from": 2, "to": 23, "width": 15 },
+    { "from": 2, "to": 24, "width": 15 },
+    { "from": 2, "to": 25, "width": 15 },
+    { "from": 2, "to": 26, "width": 15 },
+    { "from": 2, "to": 27, "width": 15 },
+    { "from": 2, "to": 28, "width": 15 },
+
+    { "from": 3, "to": 30, "width": 15 },
+    { "from": 3, "to": 31, "width": 15 },
+
+    { "from": 10, "to": 101, "width": 5, "color": "red" },
+    { "from": 10, "to": 102, "width": 5, "color": "red" },
+    { "from": 10, "to": 103, "width": 5, "color": "red" },
+    { "from": 11, "to": 110, "width": 5, "color": "blue" },
+    { "from": 11, "to": 111, "width": 5, "color": "blue" },
+    { "from": 11, "to": 112, "width": 5, "color": "blue" },
+    { "from": 12, "to": 120, "width": 5, "color": "blue" },
+    { "from": 12, "to": 121, "width": 5, "color": "blue" },
+    { "from": 12, "to": 122, "width": 5, "color": "blue" },
+
+    { "from": 20, "to": 200, "width": 5, "color": "yellow" },
+    { "from": 20, "to": 201, "width": 5, "color": "yellow" },
+    { "from": 20, "to": 202, "width": 5, "color": "yellow" },
+    { "from": 21, "to": 210, "width": 5, "color": "red" },
+    { "from": 21, "to": 211, "width": 5, "color": "red" },
+    { "from": 21, "to": 212, "width": 5, "color": "red" },
+    { "from": 22, "to": 220, "width": 5, "color": "yellow" },
+    { "from": 23, "to": 230, "width": 5, "color": "yellow" },
+    { "from": 23, "to": 231, "width": 5, "color": "yellow" },
+    { "from": 24, "to": 240, "width": 5, "color": "yellow" },
+    { "from": 24, "to": 241, "width": 5, "color": "yellow" },
+    { "from": 25, "to": 250, "width": 5, "color": "yellow" },
+    { "from": 26, "to": 260, "width": 5, "color": "yellow" },
+    { "from": 27, "to": 270, "width": 5, "color": "yellow" },
+    { "from": 27, "to": 271, "width": 5, "color": "yellow" },
+    { "from": 28, "to": 280, "width": 5, "color": "yellow" },
+
+    { "from": 30, "to": 300, "width": 5, "color": "green" },
+    { "from": 30, "to": 301, "width": 5, "color": "green" },
+    { "from": 30, "to": 302, "width": 5, "color": "green" },
+    { "from": 30, "to": 303, "width": 5, "color": "green" },
+
+    { "from": 31, "to": 310, "width": 5, "color": "green" },
+    { "from": 31, "to": 311, "width": 5, "color": "green" }
+
+  ],
+
+  "popupContent": {
+    "10": {
+      "title": "Refonte du suivi des prestataires",
+      "type": "Projet",
+      "context": "Entreprise",
+      "detail": "Reprise complète des différents documents Excel qui servaient à suivre les commandes et suivre l'utilisation des prestataires informatiques extérieurs par les métiers. <br> Différentes missions, comme la création de vues métiers, amélioration du pilotage des activités etc. <br> Enfin, le tout a été traduit sur un document final sur l'outil Grist. <br> Vous pouvez voir le détail de la démarche dans la fiche produit ci-jointe. <br><br> Les compétences que j'ai pu travaillées sont : <br> - Développement de logiciel <br> - Gestion des données <br> - Identification d'opportunités <br> <br> <img src='data/photos/fiche_grist.png' style='width:100%'> <br><strong> Version initiale de la fiche produit </strong>"
+    },
+    "11": {
+      "title": "Formation continue",
+      "type": "Missions",
+      "context": "Entreprise",
+      "detail": "Amélioration continue de diverses compétences via des échanges, formations et webinaires. <br> J'ai aussi effectué une veille informatique constante. <br> Je me suis donc formé avec initiative et réalisme à de nouvelles compétences ayant de l'utilité vis à vis du travail professionnel. <br> <br>Exemple de domaines travaillés à voir ci-joint : <br> - Data skills <br> - Identification des acteurs et contraintes <br> - Bien-être au travail"
+    },
+    "12": {
+      "title": "Responsable d'un outil de dev",
+      "type": "Projet",
+      "context": "Entreprise",
+      "detail": "Prise en main et rédaction d'un guide utilisateur pour le nouvel outil nommé Onyxia qui permet de déployer des environnements virtuels partageables et préconfigurables pour coder en python. <br> J'ai notamment compris les enjeux d’industrialisation et de reproductibilité en échangeant avec les supérieurs et testeurs.<br> J'ai aussi produit plusieurs scripts/codes pour automatiser des traitements de données, fiabiliser les flux et réduire les tâches manuelles. <br>J'étais le PO pendant la phase d'expérimentation du produit. <br><br>Voici des exemples de compétences que cela m'a permis de développer :<br> - Comprendre les besoins<br> - Codage en différents langages <br>- Compte-rendu en autonomie"
+    },
+
+    "20": {
+      "title": "Algorithmique",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Conception d’algorithmes efficaces, analyse de complexité et résolution de problèmes structurés en python. <br><br> Compétences techniques développées : <br> - Solution de stockage et recherche de données <br> - Apprentissage des algos classiques <br> - Codage en Python"
+    },
+    "21": {
+      "title": "Développement de logiciel",
+      "type": "Projet",
+      "context": "Ecole",
+      "detail": "Ce cours était composé d'une partie plus théorique avec les CM et TP mais aussi d'un projet de groupe intéressant pour nous préparer aux collaborations en codage par exemple (de nombreuses heures ont été passées sur cette matière). <br> <br>Les deux m'ont permis de me perfectionner dans plusieurs domaines tels que : <br> - Codage en python <br> - Gestion de mise en commun en informatique <br> - Travail d'équipe"
+    },
+    "22": {
+      "title": "Théorie des graphes",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Étude des graphes, parcours, chemins optimaux qui ont différentes applications aux réseaux et aux systèmes complexes. <br> <br>Ainsi, j'ai pu mieux appréhender les fondamentaux "
+    },
+    "23": {
+      "title": "Modèle et langage relationnel",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Interrogation et manipulation de bases de données relationnelles, modélisation et requêtes avancées. <br><br> Avec des applications telles que : <br> - Gestion base de données <br> - Data cleaning"
+    },
+    "24": {
+      "title": "Systèmes informatique",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Compréhension globale des SI, circulation de la donnée et articulation entre outils, utilisateurs et processus.<br> <br> Les principaux intérêts étaient : <br> - Apprentissage de la culture informatique <br> - Codage en binaire "
+    },
+    "25": {
+      "title": "Logique",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Développement d'un esprit logique et rigoureux. <br><br> - Apprentissage des fondamentaux mathématiques <br> - Logique rigoureuse"
+    },
+    "26": {
+      "title": "Anglais",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Amélioration de mon anglais avec du vocabulaire et des thèmes plus spécifique au monde de l'entreprise. <br><br> - Progression et apprentissage dans le domaine lexical"
+    },
+    "27": {
+      "title": "Science scociales",
+      "type": "Projet",
+      "context": "Ecole",
+      "detail": "Développement d'un esprit ouvert et logique à travers des échanges et réflexions. <br><br> - Réflexion en groupe et individuelle <br> - Bases des sciences sociales appliquées au travail"
+    },
+    "28": {
+      "title": "Economie",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Première fois que je fais de l'économie. Nous commençons actuellemnt par apprendre des définitions et concepts de base. <br> Cela me permet de comprendre l'actualité économique et son contexte mais aussi ma fiche de paie par exemple. <br><br> Ce cours s'applique au quotidien. <br> - Apprentissage des fondamentaux"
+    },
+
+    "30": {
+      "title": "Développement complet d'application",
+      "type": "Projet",
+      "context": "Perso",
+      "detail": "Ce projet qui était initialement pour m'entrainer pendant les vacances d'été s'est développé. <br> Au final, j'ai donc créé entièrement une application avec toutes les étapes de rédaction, codage et data nécessaires durant. <br> Le développement et codage de différents fonctionnalités et nécessités m'ont permis de rapidement élargir mes compétences informatiques. <br> De plus, cela m'a fait amélioré ma capacité à avancer seul sur des missions, rechercher des solutions et monter rapidement en compétence. <br> <br>Pour résumer : <br>- Travail en autonomie <br> - Data processing <br> - Codage en plusieurs langages <br> - Création d'API"
+    },
+    "31": {
+      "title": "Projet de séjour \n à l'international",
+      "type": "Matière",
+      "context": "Ecole",
+      "detail": "Etant en effet une matière scolaire, j'ai tout de même décider de mettre le projet de séjour international en perso car la recherche est principalement faite en temps personnel et le PSI sera effectué ni dans avec mon école ni dans mon entreprise. <br> <br>De plus, même si je ne l'ai pas encore effectué, cela m'a déja permis de travailler certaines choses :<br> - Argumentation de choix et compétences <br> - Travaile en autonomie"
+    },
+
+    "101": {
+      "title": "Identification d'opportunités",
+      "type": "Soft-skill",
+      "context": "Entreprise",
+      "detail": "Réflexion sur les besoins des parties prenantes, pour trouver des améliorations et proposer un produit amélioré (18 tables structurées). <br> J'ai apporté de nombreuses idées différentes à mon tuteur dont certaines ont été appliquées. <br> Le fait d'avoir 2 points de vue a permis de produire un résultat complet intéressant. <br><br> <img src='data/photos/excel.png' style='width:100%'> <br><strong> Avant </strong> <br><img src='data/photos/grist.png' style='width:100%'><br><strong> Après </strong>"
+    },
+    "102": {
+      "title": "Gestion des données",
+      "type": "Technique",
+      "context": "Entreprise",
+      "detail": "J'ai mis en pratique mes précedents apprentissages pour mettre en place un UML regroupant les nombreuses tables (16). <br> Cela a permis d'ordonner mes idées et de vérifier des détails. <br> Il évoluera à chaque changement pour permettre à toute nouvelle personne de comprendre la structure et liaisons entre ces nombreuses tables. <br> J'ai trouvé particulièrement intéressant d'en mettre un en place dans un cas concret et utile après m'être exercé de si nombreuses fois en cours. <br><br> <img src='data/photos/uml.png' style='width:100%'> <br><strong> UML final créer par code à gauche </strong>"
+    },
+    "103": {
+      "title": "Prise en main de logiciel",
+      "type": "Technique",
+      "context": "Entreprise",
+      "detail": "J'ai pu prendre en main un nouvel outil utile de A à Z avec ses nombreuses fonctionnalités intéressantes. <br> J'ai procédé en combinant plusieurs façons d'apprendre, c'est à dire en lisant la doc associée, en regardant des webinaires et en échangeant avec mon tuteur. <br> Mais j'ai aussi testé des fonctionalités en créant des templates qui serviront aux autres utilisateurs. <br> Cette première expérience m'a appris la meilleure façon de me familiariser avec un outil puis de devenir un expert dans sa maîtrise. <br><br> <img src='data/photos/permissions.png' style='width:100%'> <br><strong> Permissions avancées en Python</strong>"
+    },
+    "110": {
+      "title": "Bien-etre au travail",
+      "type": "Soft-skill",
+      "context": "Entreprise",
+      "detail": "Dès les premières semaines d'entreprise, j'ai eu à effectuer plusieurs formations nécessaires à une intégration positive en entreprise. <br> Je peux en citer notamment 3 : Bien-être au travail, cybersecurité et anti-corruption. <br> Ces formations m'ont permis d'apprendre de nouvelles choses dont je n'avais jamais entendues parler et ainsi de pouvoir facilement m'intégrer dans la vie de l'entreprise."
+    },
+    "111": {
+      "title": "Data skills",
+      "type": "Technique",
+      "context": "Entreprise",
+      "detail": "Lors de ma première rencontre avec mon tuteur, il m'a prêté un livre sur la data engineering qui m'a permis d'apprendre de nombreux concepts clés tel que la définition d'une pipeline. <br> Ainsi, j'ai pu démarrer mon alternance en conaissant l'environment et les attentes avec lesquelles j'allais travailler. <br><br>De plus, il y a souvent au sein de mon service, des webinaires ou présentations dans le thème de la Data Analyse. <br> En effet, j'ai pu en regarder plusieurs sur du reporting de la cartographie ou même sur les outils possibles mis en place par IGN. <br> Je me sens maintenant prêt à commencer des missions de Data Analyse dès le semestre prochain. <br><br> <img src='data/photos/reporting.png' style='width:100%'> <br><strong> Screen de la vidéo reporting</strong>"
+    },
+    "112": {
+      "title": "Compétences spécifiques",
+      "type": "Technique",
+      "context": "Entreprise",
+      "detail": "Ayant pu travailler en collaboration proche avec mon tuteur, j'ai pu profiter de son expérience et de ses connaissances sur de nombreux sujets. <br> On peut prendre l'exemple des fiches produits qu'il m'a appris à faire et que j'ai donc mis en place pour mes 2 principaux projets de ce semestre. <br> "
+    },
+    "120": {
+      "title": "Compréhension des enjeux",
+      "type": "Soft-skill",
+      "context": "Entreprise",
+      "detail": "J'ai conçu le projet en prenant en compte la mise à échelle qui incluait les ressources de temps mais aussi en individus. <br> Après avoir fait mon analyse et rapport j'ai pu conclure que le projet était réalisable et intéressant à effectuer."
+    },
+    "121": {
+      "title": "Compte-rendu en autonomie",
+      "type": "Soft-skill",
+      "context": "Entreprise",
+      "detail": "Etant product owner et le réfèrent pour des questions ou experimentations, j'ai du apprendre à travailler en autonomie et de façon organisée. <br> De plus, j'ai fait différents compte-rendus et prises de paroles qui m'ont permis de prendre plus d'assurance."
+    },
+    "122": {
+      "title": "Codage en plusieurs langages",
+      "type": "Technique",
+      "context": "Entreprise",
+      "detail": "Rédaction de scripts et codes pour effectuer des tests et faciliter l'usage de l'outil par les utilisateurs. <br> (Utilisation des langages Python, Bash et SQL.) <br> J'ai par exemple rédigé le code ci-dessous permettant l'accès à chacun à leur Databases personelles.<br><br> <img src='data/photos/onyxia_extract.png' style='width:100%'> <br><strong> Petite partie de mon code Python </strong>"
+    },
+
+    "200": {
+      "title": "Gestion des données",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Comparaison des différents types de stockage des données en python. <br> Il existe différentes méthodes telles que les listes, dictionnaires, tables de HASH etc. <br> De plus, chaque méthodes a ses propres particularités et complexités pour accéder à une valeur définie par exemple."
+    },
+    "201": {
+      "title": "Culture informatique",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "En plus des compétences en python, j'ai dans cette matière découvert et mis en place des concepts de codage et d'informatique particulièrement utiles. <br> Je parle par exemple des File/Pile, Arbres qui utilisent des classes Python. C'est d'ailleurs un outil très important que je ne connaissais pas précedemment."
+    },
+    "202": {
+      "title": "Codage en python",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "J'ai pu réutiliser des commandes et notions déja vues précedemment en les appliquant à des sujets complexes. <br> De plus, j'ai aussi découvert de nouveaux concepts en python qui me seront pour sur utiles dans ma carrière."
+    },
+    "210": {
+      "title": "Travail collaboratif",
+      "type": "Soft-skill",
+      "context": "Ecole",
+      "detail": "Ce long projet nous a donné une première expérience de travail collaboratif en cas concret. <br> J'ai appris à faire respecter des deadlines, partager des résultats, argumenter ses choix etc. <br> Cela vient aussi servir de base pour la compétence nécessaire au métier d'ingénieur : le management. <br><br> <img src='data/photos/gitlab.png' style='width:100%'> <br><strong>Tableau de répartition des taches </strong>"
+    },
+    "211": {
+      "title": "Codage en python",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Ce projet étant entièrement codé en python, nous nous sommes évidemment améliorés. <br> En effet, même si nous utilisons principalement les commandes et librairies de base, les cas d'usage étaient très complexes. <br> Ainsi, je considère surtout avoir progressé dans la rédaction d'algorithmes compliqués. <br><br> <img src='data/photos/code_dev.png' style='width:100%'> <br><strong> Exemple d'algorithme produit </strong>"
+    },
+    "212": {
+      "title": "Gestion de projet dev",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "En lien avec la compétence de travailler en groupe, je parle ici des techniques de travail collaboratif dans le monde de l'informatique et plus précisément en développement. <br> En effet, ce projet m'a fait découvrir les conventions de nommage des versions mais surout de l'outil de collaboration Git. <br><br> <img src='data/photos/merge.png' style='width:100%'> <br><strong> Outil de collaboration Gitlab </strong>"
+    },
+    "220": {
+      "title": "Fondamentaux des graphes",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Dans cette matière, nous avons appris les notions nécessaires sur la théorie des graphes et les arbres. <br> Des exemples et exercices intéressants nous ont permis de voir l'utilité dans des cas concrets. <br> De plus, le fait qu'on en utilise aussi dans la matière algorithmique était un bon complément."
+    },
+    "230": {
+      "title": "Gestion des données",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Ce cours m'a appris les bases de la gestion de données via des notions sur les Database et les systèmes dédiés. <br> Et en plus de nous apprendre les commandes SQL permettant la manipulation de ces bases de données, on voit en même temps les traductions en mathématique/arithmétique. <br> Cela nous permet ainsi de ne pas seulement savoir appliquer mais aussi de comprendre vraiment le fonctionnement général."
+    },
+    "231": {
+      "title": "Data cleaning",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Pour rentrer plus en détail sur le contenu de ce cours, nous avons vu les outils nécessaires en SQL au traitement de la donnnée. <br> En effet, il existe de nombreuses commandes et concepts à connaitre et à appliquer en tant que data ingénieur."
+    },
+    "240": {
+      "title": "Culture informatique",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Ce cours m'a enseigné les notions et concepts fondamentaux de l'informatique, de l'histoire de la création des ordinateurs à son architecture comme les composants des microprocesseurs. <br> Tous ces élements me permettront plus tard de mieux comprendre les outils avec lesquels je travaille pour être plus compétent au quotidien."
+    },
+    "241": {
+      "title": "Codage binaire",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Après avoir compris le fonctionnement et l'intérêt du binaire en informatique, nous avons appris à faire des calculs en l'utilisant. <br> De plus, on a aussi eu à coder des machines de Turing, ce qui me fait une toute nouvelle compétence informatique. <br><br> <img src='data/photos/turing.jpg' style='width:100%'><br><strong> Schéma d'une machine de Turing </strong>"
+    },
+    "250": {
+      "title": "Fondamentaux de mathématiques",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "J'ai appris les différentes règles et notions de logique. <br> Ce qui était intéressant dans cette matière c'est qu'on a bien pu voir son utilité car on a immédiatement réutilisé des notions dans d'autres matières telles que 'Modèle et langage relationnelle' et 'Systèmes informatiques'."
+    },
+    "260": {
+      "title": "Apprentissage de nouveaux vocabulaires",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Malgré le fait que j'avais de bonnes bases en anglais, j'ai tout de même beaucoup appris. <br> En effet, j'ai surtout découvert le lexique spécifique au métier d'ingénieur qui me sera donc évidemment utile."
+    },
+    "270": {
+      "title": "Réflexion sur nos experiences et projets",
+      "type": "Soft-skill",
+      "context": "Ecole",
+      "detail": "Capacité à échanger en groupe mais aussi à se poser les bonnes questions pour progresser dans la connaissance de soi et de son métier."
+    },
+    "271": {
+      "title": "Bases de SSAT",
+      "type": "Soft-skill",
+      "context": "Ecole",
+      "detail": "Apprentissage des définitions et notions principales des sciences sociales appliquées au travail a travers des vidéos, cours et échanges."
+    },
+    "280": {
+      "title": "Fondamentaux de l'éco d'entreprise",
+      "type": "Technique",
+      "context": "Ecole",
+      "detail": "Comme quasiment toute la classe, ayant un parcours scientifique, cette matière m'a permis d'appréhender les bases de l'économie avec des notions telles que les marchés financiers etc."
+    },
+
+    "300": {
+      "title": "Codage en plusieurs langages",
+      "type": "Technique",
+      "context": "Perso",
+      "detail": "Au niveau technique, ce projet à été complexe. <br> En effet, j'ai au total utiliser 5 langages de programmation différents. <br> HTML et Css pour le design et la structure de l'application; JavaScript avec le HTML pour faire fonctionner les nombreuses fonctionalités; Python pour l'API; SQL pour l'analyse de données <br> Avoir un grand nombre de compétences est selon moi un atout nécessaire pour un ingénieur. <br><br> <img src='data/photos/5_languages.png' style='width:100%'> <br><strong> Logo de ces 5 langages</strong> "
+    },
+    "301": {
+      "title": "Création d'API",
+      "type": "Technique",
+      "context": "Perso",
+      "detail": "La création d'API est une compétence nécessaire pour le métier d'ingénieur informatique. <br> En effet, elles sont de plus en plus courantes et on en utilise tous sans le savoir. <br> Une API est une interface logicielle qui permet de connecter un logiciel/service à un autre logiciel/service afin d'échanger des données. Cette première expérimentation m'a permis de découvrir ce principe avant de l'aborder en cours."
+    },
+    "302": {
+      "title": "Data cleaning",
+      "type": "Technique",
+      "context": "Perso",
+      "detail": "Nous abordons maintenant la compétence principale d'un data engineer, la transformation de la donnée. <br> La transformation des données est absolument nécessaire pour toutes les organisations utilisant des données et se fait en plusieurs étapes tel que le nettoyage des doublons etc. <br> J'ai ainsi pu apprendre et après plusieurs versions, je suis content du résultat. <br><br> <img src='data/photos/movie_cleaning.png' style='width:100%'> <br><strong> Exemple de code de nettoyage python </strong> "
+    },
+    "303": {
+      "title": "Autonomie de travail",
+      "type": "Soft-skill",
+      "context": "Perso",
+      "detail": "Sur ce projet, j'étais tout seul et devais donc m'organiser de façon autonome mais surtout avancer sur des sujets complexes sans aide. <br> En effet, même si c'était tentant de faire résoudre tous mes problèmes par l'IA, je me suis forcé à tout solutionner par moi même pour réellement progresser."
+    },
+    "310": {
+      "title": "Travail en autonomie",
+      "type": "Soft-skill",
+      "context": "Perso",
+      "detail": "La recherche de stage est un long et complexe processus. <br> Ainsi, pour trouver un projet de séjour international, je n'ai pas d'autres choix que d'être rigoureux et organisé. <br> J'ai notamment mis en place un tableau de suivi d'étapes et tâches à faire et un autre tableau répertoriant mes candidatures, mots_clés pour entretiens etc. <br> Des habitudes que je garderai pour d'autres missions. <br> <br> <img src='data/photos/tabl_intern.png' style='width:100%'> <br><strong> Tableau de canidatures </strong><br><br> <img src='data/photos/tabl_steps.png' style='width:100%'> <br><strong> Etapes de recherches </strong>"
+    },
+    "311": {
+      "title": "Argumentation",
+      "type": "Soft-skill",
+      "context": "Ecole",
+      "detail": "Dans cette recherche, j'ai aussi mené une longue réflexion sur ce que je voulais (par exemple le livrable 1) mais aussi argumenter avec d'autres personnes en expliquant mes choix. <br> Mais les principaux moments d'argumentations seront les entretiens durant lesquels il me faudra avoir du répondant et des explications claires. <br> <br> <img src='data/photos/livrable1.png' style='width:100%'> <br><strong> Livrable 1 </strong>"
+    }
+  }
+}
