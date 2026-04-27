@@ -154,8 +154,7 @@
         document.getElementById('intro-injection').innerHTML = staticIntro;
 
         // --- 2. CHARGEMENT DES DONNÉES JSON ---
-        // Assure-toi que le nom du fichier correspond bien à celui de ton dossier (ex: data_s5.json)
-        fetch('data_s5.json')
+        fetch('data_s6.json')
             .then(res => res.json())
             .then(data => {
                 globalData = data;
@@ -163,9 +162,9 @@
             })
             .catch(err => {
                 // Fallback si data_s5.json n'est pas trouvé (pour éviter l'erreur si tu as renommé)
-                 fetch('data/s5_projets.json').then(res=>res.json()).then(d=>{globalData=d; renderContent()})
+                 fetch('data/s6_projets.json').then(res=>res.json()).then(d=>{globalData=d; renderContent()})
                  .catch(e => {
-                    document.getElementById('content-injection').innerHTML = "<p style='color:red; text-align:center'>Erreur : JSON introuvable (data_s5.json). Lancez via Live Server.</p>";
+                    document.getElementById('content-injection').innerHTML = "<p style='color:red; text-align:center'>Erreur : JSON introuvable (data_s6.json). Lancez via Live Server.</p>";
                  });
             });
 

@@ -7,30 +7,29 @@
 
     { "id": 10, "label": "Fix d'un \n gros projet", "group": "mission"},
     { "id": 11, "label": "Automatisation \n complète", "group": "mission", "color": "red" },
-    { "id": 12, "label": "Analyse des \n enjeux humains", "group": "mission" },
+    { "id": 12, "label": "Processus de \n recrutement ", "group": "mission" },
 
     { "id": 20, "label": "Java", "group": "school", "color": "red" },
     { "id": 21, "label": "Technologie \n web", "group": "school"},
     { "id": 22, "label": "Conception \n SI", "group": "school" },
-    { "id": 23, "label": "Requetes", "group": "school" },
+    { "id": 23, "label": "Requêtes", "group": "school" },
     { "id": 24, "label": "Transactionnel", "group": "school" },
     { "id": 25, "label": "Algèbre \n linéaire", "group": "school" },
     { "id": 27, "label": "Sciences sociales", "group": "school" },
     { "id": 28, "label": "Anglais", "group": "school" },
 
-    { "id": 101, "label": "Echange \n technique"},
+    { "id": 101, "label": "Échange \n technique"},
     { "id": 102, "label": "Revue de \n code", "shape": "hexagon"},
     { "id": 110, "label": "Organisation \n du travail"},
     { "id": 111, "label": "Data \n visualisation", "shape": "diamond", "color": "red"},
     { "id": 112, "label": "Argumentation \n des choix"},
     { "id": 113, "label": "Pipeline \n python", "shape": "hexagon", "color": "red"},
     { "id": 120, "label": "Système de \n recrutement"},
-    { "id": 121, "label": "Importance du \n tuteur"},
 
     { "id": 200, "label": "Nouveau \n langage", "shape": "diamond", "color": "red"},
     { "id": 201, "label": "Programmation \n orientée objet", "shape": "diamond", "color": "red"},
-    { "id": 210, "label": "Développement \nweb", "shape": "hexagon", "color": "red"},
-    { "id": 211, "label": "Compréhension \n du web", "color": "red", "shape": "diamond"},
+    { "id": 210, "label": "Développement \nweb", "shape": "hexagon"},
+    { "id": 211, "label": "Compréhension \n du web", "shape": "diamond"},
     { "id": 220, "label": "Fondamentaux \n des UML", "shape": "diamond"},
     { "id": 230, "label": "Gestion \nde DB", "shape": "hexagon"},
     { "id": 240, "label": "Gestion \nde DB", "shape": "diamond"},
@@ -65,7 +64,6 @@
     { "from": 11, "to": 112, "width": 5, "color": "blue" },
     { "from": 11, "to": 113, "width": 5, "color": "red" },
     { "from": 12, "to": 120, "width": 5, "color": "blue" },
-    { "from": 12, "to": 121, "width": 5, "color": "blue" },
 
     { "from": 20, "to": 200, "width": 5, "color": "red" },
     { "from": 20, "to": 201, "width": 5, "color": "red" },
@@ -83,188 +81,181 @@
 
   "popupContent": {
     "10": {
-      "title": "Refonte du suivi des prestataires",
-      "type": "Projet",
-      "context": "Entreprise",
-      "detail": "Reprise complète des différents documents Excel qui servaient à suivre les commandes et suivre l'utilisation des prestataires informatiques extérieurs par les métiers. <br> Différentes missions, comme la création de vues métiers, amélioration du pilotage des activités etc. <br> Enfin, le tout a été traduit sur un document final sur l'outil Grist. <br> Vous pouvez voir le détail de la démarche dans la fiche produit ci-jointe. <br><br> Les compétences que j'ai pu travaillées sont : <br> - Développement de logiciel <br> - Gestion des données <br> - Identification d'opportunités <br> <br> <img src='data/photos/fiche_grist.png' style='width:100%'> <br><strong> Version initiale de la fiche produit </strong>"
-    },
-    "11": {
-      "title": "Formation continue",
+      "title": "Fix d'un gros projet",
       "type": "Missions",
       "context": "Entreprise",
-      "detail": "Amélioration continue de diverses compétences via des échanges, formations et webinaires. <br> J'ai aussi effectué une veille informatique constante. <br> Je me suis donc formé avec initiative et réalisme à de nouvelles compétences ayant de l'utilité vis à vis du travail professionnel. <br> <br>Exemple de domaines travaillés à voir ci-joint : <br> - Data skills <br> - Identification des acteurs et contraintes <br> - Bien-être au travail"
+      "detail": "Une automatisation importante ayant cassé, mon tuteur m'a confié sa résolution. <br> J'ai ainsi du faire preuve d'analyse et de logique pour trouver les erreurs et rattraper le retard de données que cela avait causé. <br> De plus, mon tuteur ayant quitté l'entreprise, j'ai récupéré la responsabilité de la supervision du projet."
     },
-    "12": {
-      "title": "Responsable d'un outil de dev",
+    "11": {
+      "title": "Automatisation complète",
       "type": "Projet",
       "context": "Entreprise",
-      "detail": "Prise en main et rédaction d'un guide utilisateur pour le nouvel outil nommé Onyxia qui permet de déployer des environnements virtuels partageables et préconfigurables pour coder en python. <br> J'ai notamment compris les enjeux d’industrialisation et de reproductibilité en échangeant avec les supérieurs et testeurs.<br> J'ai aussi produit plusieurs scripts/codes pour automatiser des traitements de données, fiabiliser les flux et réduire les tâches manuelles. <br>J'étais le PO pendant la phase d'expérimentation du produit. <br><br>Voici des exemples de compétences que cela m'a permis de développer :<br> - Comprendre les besoins<br> - Codage en différents langages <br>- Compte-rendu en autonomie"
+      "detail": "Pour répondre à une demande métier, j'ai du mettre en place une infrastructure complète et automatisée. <br> J'ai ainsi pu mener un projet en autonomie et utiliser divers outils."
+    },
+    "12": {
+      "title": "Processus de recrutement",
+      "type": "Missions",
+      "context": "Entreprise",
+      "detail": "Comme dit précédemment, mon tuteur à quitté l'entreprise. <br> Ainsi, j'ai pu comprendre les enjeux derrière un tel remplacement avec notamment une nouvelle fiche de poste pour son remplaçant."
     },
 
     "20": {
-      "title": "Algorithmique",
+      "title": "Java",
       "type": "Matière",
       "context": "Ecole",
-      "detail": "Conception d’algorithmes efficaces, analyse de complexité et résolution de problèmes structurés en python. <br><br> Compétences techniques développées : <br> - Solution de stockage et recherche de données <br> - Apprentissage des algos classiques <br> - Codage en Python"
+      "detail": "Découverte d'un nouveau langage de programmation orienté objet. <br> Via des CMs, TDs et TPs."
     },
     "21": {
-      "title": "Développement de logiciel",
+      "title": "Technologie web",
       "type": "Projet",
       "context": "Ecole",
-      "detail": "Ce cours était composé d'une partie plus théorique avec les CM et TP mais aussi d'un projet de groupe intéressant pour nous préparer aux collaborations en codage par exemple (de nombreuses heures ont été passées sur cette matière). <br> <br>Les deux m'ont permis de me perfectionner dans plusieurs domaines tels que : <br> - Codage en python <br> - Gestion de mise en commun en informatique <br> - Travail d'équipe"
+      "detail": "Approfondissement de mes connaissances acquises en Tle. <br> Nous avons travaillé avec différents langages de codage tels que le HTML, CSS et JavaScript. <br> J'ai ainsi pu mieux comprendre le fonctionnement du web et les différentes étapes de développement d'un site."
     },
     "22": {
-      "title": "Théorie des graphes",
+      "title": "Conception SI",
       "type": "Matière",
       "context": "Ecole",
-      "detail": "Étude des graphes, parcours, chemins optimaux qui ont différentes applications aux réseaux et aux systèmes complexes. <br> <br>Ainsi, j'ai pu mieux appréhender les fondamentaux "
+      "detail": "Apprentissage des fondamentaux de la conception d'un système d'information. <br> Nous avons vu les différentes étapes de la conception d'un SI, de l'analyse des besoins à la mise en place d'une architecture adaptée. <br> J'ai ainsi pu mieux comprendre les utilisations possibles dans le cadre professionnel.."
     },
     "23": {
-      "title": "Modèle et langage relationnel",
+      "title": "Requêtes",
       "type": "Matière",
       "context": "Ecole",
-      "detail": "Interrogation et manipulation de bases de données relationnelles, modélisation et requêtes avancées. <br><br> Avec des applications telles que : <br> - Gestion base de données <br> - Data cleaning"
+      "detail": "Compréhension des optimisations possibles pour les requêtes SQL et des bases de données. <br> Une compétence très importante pour le métier d'Ingénieur Data. <br> En effet, il existe différentes méthodes pour faire une même action et certaines sont plus efficaces que d'autres."
     },
     "24": {
-      "title": "Systèmes informatique",
+      "title": "Transactionnel",
       "type": "Matière",
       "context": "Ecole",
-      "detail": "Compréhension globale des SI, circulation de la donnée et articulation entre outils, utilisateurs et processus.<br> <br> Les principaux intérêts étaient : <br> - Apprentissage de la culture informatique <br> - Codage en binaire "
+      "detail": "Découverte des principes de la gestion des transactions dans les systèmes d'information. <br> Nous avons vu les différentes propriétés d'une transaction et les mécanismes de contrôle de concurrence. <br> J'ai pris connaissance de multiples problèmes de lectures et modifications de transactions possibles qui sont importants à éviter dans une structure complexe."
     },
     "25": {
-      "title": "Logique",
+      "title": "Algèbre linéaire",
       "type": "Matière",
       "context": "Ecole",
-      "detail": "Développement d'un esprit logique et rigoureux. <br><br> - Apprentissage des fondamentaux mathématiques <br> - Logique rigoureuse"
+      "detail": "Nouvelle matière mathématique effectuée en faisant des exercices d'application en groupe de 2. <br> Cette thématique sera essentielle pour l'apprentissage du machine learning et de l'intelligence artificielle."
     },
     "27": {
       "title": "Science scociales",
       "type": "Projet",
       "context": "Ecole",
-      "detail": "Développement d'un esprit ouvert et logique à travers des échanges et réflexions. <br><br> - Réflexion en groupe et individuelle <br> - Bases des sciences sociales appliquées au travail"
+      "detail": "Développement d'un esprit ouvert et logique à travers des échanges et réflexions."
     },
     "28": {
-      "title": "Economie",
+      "title": "Anglais",
       "type": "Matière",
       "context": "Ecole",
-      "detail": "Première fois que je fais de l'économie. Nous commençons actuellemnt par apprendre des définitions et concepts de base. <br> Cela me permet de comprendre l'actualité économique et son contexte mais aussi ma fiche de paie par exemple. <br><br> Ce cours s'applique au quotidien. <br> - Apprentissage des fondamentaux"
+      "detail": "Entrainements pour le TOEIC à passer fin mai. <br> De plus, les retours et conseils du professeur étaient enrichissants."
     },
 
     "101": {
-      "title": "Identification d'opportunités",
+      "title": "Échange technique",
       "type": "Soft-skill",
       "context": "Entreprise",
-      "detail": "Réflexion sur les besoins des parties prenantes, pour trouver des améliorations et proposer un produit amélioré (18 tables structurées). <br> J'ai apporté de nombreuses idées différentes à mon tuteur dont certaines ont été appliquées. <br> Le fait d'avoir 2 points de vue a permis de produire un résultat complet intéressant. <br><br> <img src='data/photos/excel.png' style='width:100%'> <br><strong> Avant </strong> <br><img src='data/photos/grist.png' style='width:100%'><br><strong> Après </strong>"
+      "detail": "Suite à divers tests, j'ai repéré différentes incohérences dans les données. <br> J'ai ainsi communiqué ces problèmes avec le responsable technique du logiciel. <br> Nous avons ensuite longuemment échangé sur les fonctionnements logiques pour trouver des solutions."
     },
     "102": {
-      "title": "Gestion des données",
+      "title": "Revue de code",
       "type": "Technique",
       "context": "Entreprise",
-      "detail": "J'ai mis en pratique mes précedents apprentissages pour mettre en place un UML regroupant les nombreuses tables (16). <br> Cela a permis d'ordonner mes idées et de vérifier des détails. <br> Il évoluera à chaque changement pour permettre à toute nouvelle personne de comprendre la structure et liaisons entre ces nombreuses tables. <br> J'ai trouvé particulièrement intéressant d'en mettre un en place dans un cas concret et utile après m'être exercé de si nombreuses fois en cours. <br><br> <img src='data/photos/uml.png' style='width:100%'> <br><strong> UML final créer par code à gauche </strong>"
+      "detail": "Analyse et évaluation de la qualité du code produit par les développeurs lors de la création du projet. <br> Identification des points d'amélioration et proposition de solutions. <br> En langage Python."
     },
     "110": {
-      "title": "Bien-etre au travail",
+      "title": "Organisation du travail",
       "type": "Soft-skill",
       "context": "Entreprise",
-      "detail": "Dès les premières semaines d'entreprise, j'ai eu à effectuer plusieurs formations nécessaires à une intégration positive en entreprise. <br> Je peux en citer notamment 3 : Bien-être au travail, cybersecurité et anti-corruption. <br> Ces formations m'ont permis d'apprendre de nouvelles choses dont je n'avais jamais entendues parler et ainsi de pouvoir facilement m'intégrer dans la vie de l'entreprise."
+      "detail": "Le projet étant conséquent et devant etre construit en entier, il était important que je reste ordonné pour ne pas me perdre dans les différentes étapes. <br> J'ai mis en place une roadmap avec les outils et temps accordés pour chaque points importants. <br> Ainsi, j'ai pu respecter les délais imposés."
     },
     "111": {
-      "title": "Data skills",
+      "title": "Data visualisation",
       "type": "Technique",
       "context": "Entreprise",
-      "detail": "Lors de ma première rencontre avec mon tuteur, il m'a prêté un livre sur la data engineering qui m'a permis d'apprendre de nombreux concepts clés tel que la définition d'une pipeline. <br> Ainsi, j'ai pu démarrer mon alternance en conaissant l'environment et les attentes avec lesquelles j'allais travailler. <br><br>De plus, il y a souvent au sein de mon service, des webinaires ou présentations dans le thème de la Data Analyse. <br> En effet, j'ai pu en regarder plusieurs sur du reporting de la cartographie ou même sur les outils possibles mis en place par IGN. <br> Je me sens maintenant prêt à commencer des missions de Data Analyse dès le semestre prochain. <br><br> <img src='data/photos/reporting.png' style='width:100%'> <br><strong> Screen de la vidéo reporting</strong>"
+      "detail": "La fin du projet consistait à mettre en place un dashboard de visualisation des données. <br> J'ai ainsi pu développer mes compétences BI avec l'outil PowerBI. <br> <img src='data/photos/hivebrite.png' style='width:100%'> <br><strong> Tableau de bord de visualisation des KPIs </strong>"
     },
     "112": {
-      "title": "Compétences spécifiques",
-      "type": "Technique",
+      "title": "Argumentation des choix",
+      "type": "Soft-skill",
       "context": "Entreprise",
-      "detail": "Ayant pu travailler en collaboration proche avec mon tuteur, j'ai pu profiter de son expérience et de ses connaissances sur de nombreux sujets. <br> On peut prendre l'exemple des fiches produits qu'il m'a appris à faire et que j'ai donc mis en place pour mes 2 principaux projets de ce semestre. <br> "
+      "detail": "Menant ce projet en autonomie, j'ai du faire des choix techniques et d'organisation. <br> J'ai ainsi du argumenter mes choix d'outils (pour la pipeline, pour la visualisation, le langage etc.) auprès de mon tuteur et de mes collègues pour les faire valider. <br> Cela m'a permis de mieux comprendre les enjeux derrière chaque décision et de mieux communiquer avec les autres membres de l'équipe."
     },
     "113": {
       "title": "Pipeline python",
       "type": "Technique",
       "context": "Entreprise",
-      "detail": "La base du métier"
+      "detail": "L'étape centrale du projet était la mise en place d'une pipeline de traitement de données en langage Python. <br> J'ai pris mon temps pour la construire de façon optimale car son efficacité est primordiale pour qu'elle puisse s'éxecuter de façon automatique sans nécessité de fix récurrents. <br> <em> Définition : Un pipeline de données est une série d'étapes de traitement visant à préparer les données (en gros volume) de l'entreprise pour l'analyse. </em>"
     },
     "120": {
-      "title": "Compréhension des enjeux",
+      "title": "Système de recrutement",
       "type": "Soft-skill",
       "context": "Entreprise",
-      "detail": "J'ai conçu le projet en prenant en compte la mise à échelle qui incluait les ressources de temps mais aussi en individus. <br> Après avoir fait mon analyse et rapport j'ai pu conclure que le projet était réalisable et intéressant à effectuer."
-    },
-    "121": {
-      "title": "Compte-rendu en autonomie",
-      "type": "Soft-skill",
-      "context": "Entreprise",
-      "detail": "Etant product owner et le réfèrent pour des questions ou experimentations, j'ai du apprendre à travailler en autonomie et de façon organisée. <br> De plus, j'ai fait différents compte-rendus et prises de paroles qui m'ont permis de prendre plus d'assurance."
+      "detail": "Après le départ de mon tuteur, j'ai pu observer le déroulement de recrutement d'un employé important au sein d'une entreprise. <br> De plus, l'offre à tout d'abord été diffusé en interne et je devais garder la confidentialité même si j'ai su tot qui obtiendrait le role. <br> J'ai pu comprendre les multiples conséquences et enjeux que provoquent un changement de poste au sein d'une grosse entreprise."
     },
 
     "200": {
-      "title": "Gestion des données",
+      "title": "Nouveau langage",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "Comparaison des différents types de stockage des données en python. <br> Il existe différentes méthodes telles que les listes, dictionnaires, tables de HASH etc. <br> De plus, chaque méthodes a ses propres particularités et complexités pour accéder à une valeur définie par exemple."
+      "detail": "J'ai appris un nouveau langage de programmation, le Java. <br> J'ai ainsi pu agrandir  ma liste de compétences en programmation. <br> Même si c'ets un langage que j'utiliserai moins que d'autres, c'est important de connaitre les bases car j'aurais probablement besoin d'encadrer des projets l'utilisant durant ma carrière d'ingénieur informatique."
     },
     "201": {
-      "title": "Culture informatique",
+      "title": "Programmation orientée objet",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "En plus des compétences en python, j'ai dans cette matière découvert et mis en place des concepts de codage et d'informatique particulièrement utiles. <br> Je parle par exemple des File/Pile, Arbres qui utilisent des classes Python. C'est d'ailleurs un outil très important que je ne connaissais pas précedemment."
+      "detail": "Un concept spécial en Java, qu'on retrouve en C++ est qu'on gère non pas des données mais des objets. <br> <em>Un objet est une instance d'une classe qui regroupe des données et des méthodes. <br> J'ai ainsi pu mieux comprendre les avantages de ce type de programmation et les différentes façons de l'utiliser pour structurer un projet.<br> Nous l'avons d'ailleurs mis en application lors d'un Hackathon intéressant en groupe début avril ! <br> <img src='data/photos/hackathon.jpg' style='width:100%'> <br><strong> Notre groupe en train de réfléchir à la structure du code </strong"
     },
     "210": {
-      "title": "Travail collaboratif",
+      "title": "Développement web",
       "type": "Soft-skill",
       "context": "Ecole",
-      "detail": "Ce long projet nous a donné une première expérience de travail collaboratif en cas concret. <br> J'ai appris à faire respecter des deadlines, partager des résultats, argumenter ses choix etc. <br> Cela vient aussi servir de base pour la compétence nécessaire au métier d'ingénieur : le management. <br><br> <img src='data/photos/gitlab.png' style='width:100%'> <br><strong>Tableau de répartition des taches </strong>"
+      "detail": "Perfectionnement dans plusieurs langages tel que CSS, Html et Javascript. <br> En plus de les apprendre en cours théorique, nous avons aussi mis en pratique ces nouvelles compétences dans des TPs intéressants et concrets. <br> Meme si ce n'est pas le sujet exact dans lequel je souhaite me spécialiser, c'est toujours intéressant de connaitre les différents sujets autour de l'ingénierie informatique."
     },
     "211": {
-      "title": "Codage en python",
+      "title": "Compréhension du web",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "Ce projet étant entièrement codé en python, nous nous sommes évidemment améliorés. <br> En effet, même si nous utilisons principalement les commandes et librairies de base, les cas d'usage étaient très complexes. <br> Ainsi, je considère surtout avoir progressé dans la rédaction d'algorithmes compliqués. <br><br> <img src='data/photos/code_dev.png' style='width:100%'> <br><strong> Exemple d'algorithme produit </strong>"
+      "detail": "Maintenant que j'ai découvert comment créer et maintenir un site web, je comprends mieux des bugs ou cas d'usage de tout les jours. <br> J'ai une meilleure logique et donc utilisation du web."
     },
 
     "220": {
-      "title": "Fondamentaux des graphes",
+      "title": "Fondamentaux des UMLs",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "Utile en entreprise et Java"
+      "detail": "Comprendre les graphiques et la conception de systèmes d'informations est une connaissance importante à acquérir pour le quotidien d'un ingénieur. En effet, jai déja du en réaliser ou lire pour le cours de Java mais aussi en entreprise dans une documentation technique. <br> <em>Le système d'information (SI) consiste en l'ensemble de ressources et d'outils mis en place au sein d'une entreprise et permettant de collecter, stocker et analyser les informations nécessaires au bon développement et fonctionnement de l'entreprise.</em>"
     },
     "230": {
-      "title": "Gestion des données",
+      "title": "Gestion de Base de données",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "Ce cours m'a appris les bases de la gestion de données via des notions sur les Database et les systèmes dédiés. <br> Et en plus de nous apprendre les commandes SQL permettant la manipulation de ces bases de données, on voit en même temps les traductions en mathématique/arithmétique. <br> Cela nous permet ainsi de ne pas seulement savoir appliquer mais aussi de comprendre vraiment le fonctionnement général."
+      "detail": "Comme dit lors du précedent semestre, la gestion de DB est essentiel au métier 'Data Engineer'. <br> Il y a toujours moyen de se perfectionner et de trouver des améliorations de gestion de couts, efficacité etc. Ici, nous avons vu l'interet d'optimiser la structure de nos base de données par différents moyens."
     },
     "240": {
-      "title": "Culture informatique",
+      "title": "Gestion de Base de données",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "Ce cours m'a enseigné les notions et concepts fondamentaux de l'informatique, de l'histoire de la création des ordinateurs à son architecture comme les composants des microprocesseurs. <br> Tous ces élements me permettront plus tard de mieux comprendre les outils avec lesquels je travaille pour être plus compétent au quotidien."
+      "detail": "C'est une compétence déja beaucoup vu cette année mais là c'est un principe encore différent. <br> En effet, les systèmes transactionnels sont aussi importants pour les sysèmes web car ils peuvent causer de gros problème et blocages dans des processus automatique d'un système alimenté à une base de donnée."
     },
     "250": {
-      "title": "Fondamentaux de mathématiques",
+      "title": "Application de mathématiques",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "J'ai appris les différentes règles et notions de logique. <br> Ce qui était intéressant dans cette matière c'est qu'on a bien pu voir son utilité car on a immédiatement réutilisé des notions dans d'autres matières telles que 'Modèle et langage relationnelle' et 'Systèmes informatiques'."
+      "detail": "Nous avons vu les bases de l'algèbre linéaire. <br> Personellement, j'en ai déja fait beaucoup en prépa donc c'était pour moi une mise en pratique intéressante dans des cas data."
     },
     "270": {
-      "title": "Réflexion sur nos experiences et projets",
+      "title": "Travail de recherche",
       "type": "Soft-skill",
       "context": "Ecole",
-      "detail": "Capacité à échanger en groupe mais aussi à se poser les bonnes questions pour progresser dans la connaissance de soi et de son métier."
-    },
+      "detail": "Grace aux conseils des professeurs et à une mis en commun régulière dans le groupe, nous avons appris à mener une recherche documentaire profesionnelle. <br> Nous avons ainsi pu trouver des sources fiables et pertinentes pour notre travail de recherche. <br> <img src='data/photos/biblio.png' style='width:100%'> <br><strong> Extrait de notre bibliographie détaillée. </strong>"},
     "271": {
-      "title": "Bases de SSAT",
+      "title": "Sujet intéressant",
       "type": "Soft-skill",
       "context": "Ecole",
-      "detail": "Apprentissage des définitions et notions principales des sciences sociales appliquées au travail a travers des vidéos, cours et échanges."
+      "detail": "Nous avons choisis un sujet très intéressant et qui force à la réflexion. <br> <em> “Comment le diplôme définit-il la place de l’individu dans une société comportant de plus en plus de diplômés ?”</em><br> De plus, dans nos études, il est intéressant de comprendre le contexte nous entourant."
     },
     "280": {
-      "title": "Fondamentaux de l'éco d'entreprise",
+      "title": "Préparation au TOEIC",
       "type": "Technique",
       "context": "Ecole",
-      "detail": "Comme quasiment toute la classe, ayant un parcours scientifique, cette matière m'a permis d'appréhender les bases de l'économie avec des notions telles que les marchés financiers etc."
+      "detail": "Une fois les 850 points atteints au TOEIC, je n'aurais plus à me soucier de ceci sur les 2 prochaines années. <br> Ainsi, je pourrais me concentrer sur l'amélioration de mes points faibles."
     }
   }
 }
